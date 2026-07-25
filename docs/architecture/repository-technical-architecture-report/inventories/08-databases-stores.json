@@ -1,0 +1,140 @@
+{
+  "$schema": "voiss.repository-architecture.databases-stores.v1",
+  "coverage": {
+    "implemented_stores": "complete_curated",
+    "runtime_instances": "not_inspected"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "packages/trust-engine/src/index.ts",
+      "purpose": "control-plane schema",
+      "reference": "packages/trust-engine/src/index.ts:L141"
+    },
+    {
+      "path": "apps/voiss-aura-web/lib/trust-store.ts",
+      "purpose": "persistent web wiring",
+      "reference": "apps/voiss-aura-web/lib/trust-store.ts:L219"
+    },
+    {
+      "path": "apps/voiss-aura-web/app/api/copilotkit/[...path]/route.ts",
+      "purpose": "CopilotKit runner persistence",
+      "reference": "apps/voiss-aura-web/app/api/copilotkit/[...path]/route.ts:L29"
+    },
+    {
+      "path": "src/aura/evidence_search.py",
+      "purpose": "AURA evidence schema",
+      "reference": "src/aura/evidence_search.py:L225"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "actively_wired_tables": [
+        "workspaces",
+        "repositories",
+        "actions",
+        "agent_runs",
+        "codex_threads",
+        "run_events",
+        "approvals",
+        "validation_results",
+        "assets",
+        "controls",
+        "findings",
+        "audit_events",
+        "exports"
+      ],
+      "declared_tables": [
+        "workspaces",
+        "repositories",
+        "aura_sessions_cache",
+        "actions",
+        "agent_runs",
+        "codex_threads",
+        "run_events",
+        "approvals",
+        "validation_results",
+        "assets",
+        "controls",
+        "control_results",
+        "findings",
+        "remediations",
+        "audit_events",
+        "exports"
+      ],
+      "default_locator": ".voiss/control-plane.sqlite",
+      "id": "voiss-control-plane",
+      "owner": "trust-engine/web server",
+      "reserved_schema_tables": [
+        "aura_sessions_cache",
+        "control_results",
+        "remediations"
+      ],
+      "status": "persistent_trust_and_codex_lifecycle_wiring_implemented",
+      "technology": "SQLite via node:sqlite"
+    },
+    {
+      "default_locator": "AURA_EVIDENCE_INDEX or AURA state root/evidence.sqlite3",
+      "id": "aura-evidence-index",
+      "owner": "AURA Bridge and AURA evidence search",
+      "status": "implemented",
+      "tables": [
+        "meetings",
+        "segments",
+        "actions"
+      ],
+      "technology": "SQLite"
+    },
+    {
+      "default_locator": "VOISS_AGENT_DB_PATH or .voiss/agent-runs.sqlite",
+      "id": "copilotkit-agent-runner",
+      "owner": "Web CopilotKit runtime",
+      "scope_control": "uses a dedicated file separate from VOISS_DB_PATH",
+      "status": "persistent_parent_linked_runner_history_implemented",
+      "tables": [
+        "agent_runs",
+        "run_state",
+        "schema_version"
+      ],
+      "technology": "SQLite via @copilotkit/sqlite-runner"
+    },
+    {
+      "default_locator": "AURA_ARTIFACT_ROOT",
+      "id": "aura-artifact-tree",
+      "owner": "AURA",
+      "status": "canonical_file_evidence",
+      "technology": "filesystem JSON/WAV/Markdown"
+    },
+    {
+      "default_locator": "AURA_AUDIT_ROOT or platform state path",
+      "id": "aura-audit",
+      "owner": "AURA",
+      "status": "implemented",
+      "technology": "append-oriented JSONL"
+    },
+    {
+      "default_locator": "VOISS_EXPORT_ROOT and CODEX_EXPORT_ROOT",
+      "id": "reviewed-exports",
+      "owner": "bridges",
+      "status": "implemented_export_paths",
+      "technology": "filesystem JSON bundles"
+    },
+    {
+      "default_locator": "VOISS_WORKTREE_ROOT or OS temporary root",
+      "id": "codex-worktrees",
+      "owner": "Codex Bridge",
+      "status": "ephemeral_isolation_path",
+      "technology": "Git worktree filesystem"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

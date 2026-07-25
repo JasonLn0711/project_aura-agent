@@ -1,0 +1,10 @@
+stateDiagram-v2
+  [*] --> NotRun
+  NotRun --> Pass: readiness or validation evidence
+  NotRun --> Fail: negative result
+  Fail --> FindingOpen
+  FindingOpen --> Mitigated: remediation evidence
+  Mitigated --> Pass: revalidation
+  FindingOpen --> Accepted: explicit risk decision
+  Pass --> Attention: evidence stale or runtime unavailable
+  Attention --> Pass: refreshed evidence

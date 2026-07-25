@@ -1,0 +1,540 @@
+{
+  "$schema": "voiss.repository-architecture.tests.v1",
+  "coverage": {
+    "retained_final_source_quality_evidence": {
+      "aura_baseline_pytest": 398,
+      "aura_bridge_pytest": 14,
+      "claim_ceiling": "one_controlled_synthetic_AURA_and_Git_fixture_flow",
+      "codex_bridge_tests": 55,
+      "deterministic_browser_scenarios": 18,
+      "guarded_live_browser_scenarios": 1,
+      "js_ts_tests": 116,
+      "production_build": "PASS",
+      "source": "docs/validation/2026-07-24-local-e2e.md",
+      "status": "PASS"
+    },
+    "runtime_results_by_generator": "not_run",
+    "test_case_counts": "static_regex_approximation",
+    "test_files": "complete_source_scan"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "package.json",
+      "purpose": "workspace test commands",
+      "reference": "package.json:L12"
+    },
+    {
+      "path": "pyproject.toml",
+      "purpose": "Python test configuration",
+      "reference": "pyproject.toml:L98"
+    },
+    {
+      "path": "docs/validation/2026-07-24-local-e2e.md",
+      "purpose": "retained final-source quality matrix",
+      "reference": "docs/validation/2026-07-24-local-e2e.md:L178"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "vitest",
+      "path": "apps/voiss-aura-web/tests/control-room.test.tsx",
+      "status": "test_surface_present",
+      "test_case_declarations": 17
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "playwright",
+      "path": "apps/voiss-aura-web/tests/e2e/control-room.spec.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 19
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "vitest",
+      "path": "apps/voiss-aura-web/tests/evidence-artifact-route.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 2
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "playwright",
+      "path": "apps/voiss-aura-web/tests/live/control-room-live.spec.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 1
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "vitest",
+      "path": "apps/voiss-aura-web/tests/mutation-body.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 2
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "vitest",
+      "path": "apps/voiss-aura-web/tests/orchestrator-resolver.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 5
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "vitest",
+      "path": "apps/voiss-aura-web/tests/security.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 4
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "vitest",
+      "path": "apps/voiss-aura-web/tests/service-status.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 1
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "vitest",
+      "path": "packages/ag-ui-codex-adapter/tests/adapter.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 6
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "vitest",
+      "path": "packages/agent-runtime/tests/agents.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 2
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "vitest",
+      "path": "packages/demo-fixtures/tests/fixtures.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 3
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "vitest",
+      "path": "packages/domain/tests/domain.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 2
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "vitest",
+      "path": "packages/trust-engine/tests/store.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 13
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "node:assert",
+      "path": "scripts/check_architecture_boundaries.mjs",
+      "status": "test_surface_present",
+      "test_case_declarations": 7
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "services/aura-bridge/tests/test_app.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 14
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "node:test",
+      "path": "services/codex-bridge/tests/bridge.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 22
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "node:test",
+      "path": "services/codex-bridge/tests/cli.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 2
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "node:test",
+      "path": "services/codex-bridge/tests/http.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 17
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "node:test",
+      "path": "services/codex-bridge/tests/observability.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 1
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "node:test",
+      "path": "services/codex-bridge/tests/sanitize.test.ts",
+      "status": "test_surface_present",
+      "test_case_declarations": 3
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_audio_capture.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 22
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_audio_export.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 11
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_audio_normalization.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 12
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_audit.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 7
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_bump_version.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 4
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_claim_review.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 4
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_denoise.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 8
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_denoise_eval_workspace.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 5
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_discover_denoise_eval_candidates.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 5
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_enhancement_backends.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 5
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_evaluate_denoise_backends.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 9
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_evidence_search.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 18
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_file_pipeline.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 16
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_fuzzy_correction_audit.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 5
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_fuzzy_corrector.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 6
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_fuzzy_manual_review.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 6
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_g4e4b_pipeline_validity.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 4
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_gate_denoise_default_promotion.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 4
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_gemma4_e4b_summary_impact.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 16
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_generate_paired_summary_artifacts.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 5
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_gpu_policy.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 3
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_imports.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 1
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_layered_summary_pipeline.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 38
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_main_window_recovery.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 1
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_markdown_renderer.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 2
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_meeting_distance.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 7
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_meeting_summary.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 4
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_ollama_runtime.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 12
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_packaged_resources.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 1
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_prepare_denoise_eval_case.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 3
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_prompt_defaults.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 11
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_punctuation.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 10
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_recording_session.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 8
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_recording_shutdown.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 6
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_runtime_diagnostics.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 11
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_runtime_paths.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 3
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_scheduling.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 6
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_settings.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 5
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_speaker_assignment.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 12
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_splitter_pipeline.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 7
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_summary.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 5
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_summary_claims_table.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 4
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_summary_impact_eval.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 6
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_summary_ui_runtime.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 5
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_transcript_io.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 17
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_transcript_review.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 12
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_transcript_review_table.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 10
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_ui_state.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 10
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_update_checker.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 2
+    },
+    {
+      "execution_result": "not_asserted_by_architecture_generator",
+      "framework": "pytest",
+      "path": "tests/test_versioning.py",
+      "status": "test_surface_present",
+      "test_case_declarations": 4
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

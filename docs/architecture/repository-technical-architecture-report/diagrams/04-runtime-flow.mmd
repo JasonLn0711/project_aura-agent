@@ -1,0 +1,18 @@
+flowchart TD
+  Mode{"VOISS_MODE"}
+  Demo["Deterministic demo fixtures"]
+  Local["Local server-side integration"]
+  Session["Signed browser session"]
+  Aura["AURA Bridge evidence"]
+  Gate["Confirmed and supported action"]
+  Plan["Codex read-only plan"]
+  Activate["Bridge-owned write activation approval"]
+  Worktree["Create isolated worktree"]
+  Named["Named command or file approval"]
+  Execute["Network-off Codex execution"]
+  Validate["Validation and evidence export"]
+  Mode -->|demo| Demo
+  Mode -->|local| Local
+  Local --> Session --> Aura --> Gate --> Plan --> Activate
+  Activate -->|allow| Worktree --> Named --> Execute --> Validate
+  Activate -->|deny| Plan

@@ -1,0 +1,181 @@
+{
+  "$schema": "voiss.repository-architecture.apis-interfaces.v1",
+  "coverage": {
+    "implemented_http_routes": "complete_curated_from_current_source",
+    "internal_python_and_typescript_functions": "covered_by_component_boundaries_not_exhaustive"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "apps/voiss-aura-web/app/api/control-room/route.ts",
+      "purpose": "web mutation boundary",
+      "reference": "apps/voiss-aura-web/app/api/control-room/route.ts:L58"
+    },
+    {
+      "path": "services/aura-bridge/src/aura_bridge/app.py",
+      "purpose": "AURA HTTP routes",
+      "reference": "services/aura-bridge/src/aura_bridge/app.py:L951"
+    },
+    {
+      "path": "services/codex-bridge/src/server.ts",
+      "purpose": "Codex HTTP routes",
+      "reference": "services/codex-bridge/src/server.ts:L354"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "method": "GET",
+      "owner": "web",
+      "path": "/api/session",
+      "purpose": "same-origin session bootstrap"
+    },
+    {
+      "method": "GET",
+      "owner": "web",
+      "path": "/api/status",
+      "purpose": "AURA/Codex readiness summary"
+    },
+    {
+      "method": "GET",
+      "owner": "web",
+      "path": "/api/trust",
+      "purpose": "persistent trust snapshot"
+    },
+    {
+      "method": "GET",
+      "owner": "web",
+      "path": "/api/aura/[...path]",
+      "purpose": "allowlisted AURA read proxy"
+    },
+    {
+      "method": "GET",
+      "owner": "web",
+      "path": "/api/aura-audio",
+      "purpose": "allowlisted AURA audio-span proxy"
+    },
+    {
+      "method": "POST",
+      "owner": "web",
+      "path": "/api/control-room",
+      "purpose": "claim review, run approval/stop, validation-gated evidence export, and operator/runtime-observation audit boundary"
+    },
+    {
+      "method": "GET|POST",
+      "owner": "web",
+      "path": "/api/copilotkit/[...path]",
+      "purpose": "CopilotKit runtime and AG-UI stream"
+    },
+    {
+      "method": "GET",
+      "owner": "aura-bridge",
+      "path": "/v1/health",
+      "purpose": "service and source readiness"
+    },
+    {
+      "method": "GET",
+      "owner": "aura-bridge",
+      "path": "/v1/sessions",
+      "purpose": "meeting session list"
+    },
+    {
+      "method": "GET",
+      "owner": "aura-bridge",
+      "path": "/v1/sessions/{session_id}",
+      "purpose": "meeting detail"
+    },
+    {
+      "method": "GET",
+      "owner": "aura-bridge",
+      "path": "/v1/sessions/{session_id}/segments",
+      "purpose": "transcript segments"
+    },
+    {
+      "method": "GET",
+      "owner": "aura-bridge",
+      "path": "/v1/sessions/{session_id}/claims",
+      "purpose": "claim list"
+    },
+    {
+      "method": "POST",
+      "owner": "aura-bridge",
+      "path": "/v1/sessions/{session_id}/claims/{claim_id}/review",
+      "purpose": "explicit claim review"
+    },
+    {
+      "method": "GET",
+      "owner": "aura-bridge",
+      "path": "/v1/actions",
+      "purpose": "evidence-backed actions"
+    },
+    {
+      "method": "GET",
+      "owner": "aura-bridge",
+      "path": "/v1/evidence/search",
+      "purpose": "canonical evidence search"
+    },
+    {
+      "method": "POST",
+      "owner": "aura-bridge",
+      "path": "/v1/evidence/audio-span",
+      "purpose": "bounded audio evidence"
+    },
+    {
+      "method": "GET",
+      "owner": "aura-bridge",
+      "path": "/v1/audit/events",
+      "purpose": "audit timeline"
+    },
+    {
+      "method": "POST",
+      "owner": "aura-bridge",
+      "path": "/v1/evidence/export",
+      "purpose": "reviewed evidence export"
+    },
+    {
+      "method": "GET",
+      "owner": "aura-bridge",
+      "path": "/v1/evidence/exports/{export_id}",
+      "purpose": "validated export download"
+    },
+    {
+      "method": "GET",
+      "owner": "codex-bridge",
+      "path": "/v1/status",
+      "purpose": "Codex account/runtime readiness"
+    },
+    {
+      "method": "POST",
+      "owner": "codex-bridge",
+      "path": "/v1/runs",
+      "purpose": "start read or write-gated run stream"
+    },
+    {
+      "method": "POST",
+      "owner": "codex-bridge",
+      "path": "/v1/approvals/resume",
+      "purpose": "resume exact pending approval"
+    },
+    {
+      "method": "POST",
+      "owner": "codex-bridge",
+      "path": "/v1/runs/{run_id}/stop",
+      "purpose": "cancel staged write activation or interrupt an active run"
+    },
+    {
+      "method": "POST",
+      "owner": "codex-bridge",
+      "path": "/v1/evidence/export",
+      "purpose": "export sanitized completed-write evidence only after an in-scope pass matches terminal patch SHA-256 and mutation generation with no failure or overflow"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

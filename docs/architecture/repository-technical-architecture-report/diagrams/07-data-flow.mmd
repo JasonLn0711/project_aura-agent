@@ -1,0 +1,14 @@
+flowchart LR
+  Audio["Raw or imported audio"]
+  Transcript["Segments and speakers"]
+  Claims["Claims and structured summary"]
+  Review["Human review"]
+  Actions["Supported actions"]
+  Runs["Agent runs and approvals"]
+  Validation["Validation results"]
+  Exports["Reviewed evidence exports"]
+  Audit["Hash-chain and AURA audit"]
+  Audio --> Transcript --> Claims --> Review --> Actions --> Runs --> Validation --> Exports
+  Review --> Audit
+  Runs --> Audit
+  Validation --> Audit

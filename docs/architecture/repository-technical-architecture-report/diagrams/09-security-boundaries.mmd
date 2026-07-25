@@ -1,0 +1,15 @@
+flowchart LR
+  BrowserZone["Browser zone: no Bridge credentials"]
+  WebZone["Web server zone: signed session and server-only secrets"]
+  BridgeZone["Loopback Bridge zone: bearer token and Origin allowlist"]
+  RuntimeZone["Runtime zone: AURA plus rootless Podman Codex"]
+  SandboxZone["Nested managed-bubblewrap: network-off tools"]
+  RepoZone["Repository zone: allowlist and isolated worktree"]
+  EvidenceZone["Evidence zone: owner-oriented paths, redaction, hash chain"]
+  BrowserZone -->|same-origin| WebZone
+  WebZone -->|token, loopback| BridgeZone
+  BridgeZone -->|explicit protocol| RuntimeZone
+  RuntimeZone --> SandboxZone
+  SandboxZone -->|approved mutation and allowlisted rw root only| RepoZone
+  WebZone --> EvidenceZone
+  BridgeZone --> EvidenceZone

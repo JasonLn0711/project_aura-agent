@@ -1,0 +1,110 @@
+{
+  "$schema": "voiss.repository-architecture.entry-points.v1",
+  "coverage": {
+    "ad_hoc_scripts": "curated_high_value",
+    "declared_manifests": "complete"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "package.json",
+      "purpose": "root scripts",
+      "reference": "package.json:L5"
+    },
+    {
+      "path": "pyproject.toml",
+      "purpose": "Python console scripts",
+      "reference": "pyproject.toml:L58"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "command": "pnpm dev",
+      "id": "web-dev",
+      "path": "package.json",
+      "scope": "local web"
+    },
+    {
+      "command": "pnpm demo",
+      "id": "web-demo",
+      "path": "package.json",
+      "scope": "fixture demo"
+    },
+    {
+      "command": "uv run aura",
+      "id": "aura-desktop",
+      "path": "pyproject.toml",
+      "scope": "desktop"
+    },
+    {
+      "command": "uv run aura-evidence",
+      "id": "aura-evidence",
+      "path": "pyproject.toml",
+      "scope": "evidence CLI"
+    },
+    {
+      "command": "uv run aura-bridge",
+      "id": "aura-bridge",
+      "path": "services/aura-bridge/pyproject.toml",
+      "scope": "loopback service"
+    },
+    {
+      "command": "pnpm --filter @voiss/codex-bridge start",
+      "id": "codex-bridge",
+      "path": "services/codex-bridge/package.json",
+      "scope": "loopback service"
+    },
+    {
+      "command": "pnpm codex:runtime:build",
+      "id": "codex-runtime-build",
+      "path": "package.json",
+      "scope": "digest-pinned rootless Podman image"
+    },
+    {
+      "command": "services/codex-bridge/run-in-podman.sh app-server --listen stdio://",
+      "id": "codex-runtime-wrapper",
+      "path": "services/codex-bridge/run-in-podman.sh",
+      "scope": "verified Codex target lane"
+    },
+    {
+      "command": "Next.js App Router /",
+      "id": "web-page",
+      "path": "apps/voiss-aura-web/app/page.tsx",
+      "scope": "browser"
+    },
+    {
+      "command": "scripts/run_aura_windows.ps1",
+      "id": "windows-launch",
+      "path": "scripts/run_aura_windows.ps1",
+      "scope": "Windows desktop"
+    },
+    {
+      "command": "pnpm test:architecture",
+      "id": "architecture-boundary-check",
+      "path": "scripts/check_architecture_boundaries.mjs",
+      "scope": "static architecture policy"
+    },
+    {
+      "command": "VOISS_LIVE_E2E=1 pnpm test:e2e:live",
+      "id": "live-browser-e2e",
+      "path": "apps/voiss-aura-web/playwright.live.config.ts",
+      "scope": "activation-gated real local services"
+    },
+    {
+      "command": "python3 docs/architecture/repository-technical-architecture-report/generate.py",
+      "id": "architecture-generator",
+      "path": "docs/architecture/repository-technical-architecture-report/generate.py",
+      "scope": "documentation"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

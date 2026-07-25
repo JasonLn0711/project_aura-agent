@@ -1,0 +1,66 @@
+{
+  "$schema": "voiss.repository-architecture.package-metadata.v1",
+  "current_evidence": {
+    "build_validated_by_generator": false,
+    "dirty_path_count_excluding_this_package": 28,
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "published": false,
+    "retained_demo_evidence": {
+      "classification": "deterministic_demo_evidence",
+      "screenshot": "docs/validation/screenshots/2026-07-24-control-room-demo.png",
+      "screenshot_sha256": "d2207ad08b24191fc3dc590fe6e20b1cafa0f3c76f4fce7998cbd90aa5d1c2ac",
+      "walkthrough_outer_file_sha256": "bde472bdcb409009d45f26dcb06c8f6f7dbbf925727c9d3d55e2bc88f8148e82"
+    },
+    "retained_validation": {
+      "audit_events_live_correlation": 10,
+      "audit_events_total": 11,
+      "copilotkit_parent_linked_invocations": 3,
+      "exported_write_run_codex_events": 366,
+      "persisted_run_events": 1139,
+      "production_or_multi_repository_repeatability": false,
+      "record": "docs/validation/2026-07-24-local-e2e.md",
+      "scope": "one_controlled_synthetic_AURA_and_Git_fixture_flow",
+      "separate_active_egress_denial_canary": true,
+      "terminal_mutation_generation": 6,
+      "terminal_patch_validations_passed": 2
+    },
+    "runtime_validated_by_generator": false,
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "source_file_count": 283,
+    "tests_validated_by_generator": false
+  },
+  "deliverable_counts": {
+    "inventories": 19,
+    "mermaid_sources": 12,
+    "reports": 20,
+    "sboms": 2
+  },
+  "dependency_coverage": {
+    "external_models_and_runtimes": "partial_curated_source_detected",
+    "licenses": "partial_NOASSERTION",
+    "native_tools": "partial_curated_source_detected",
+    "node_resolved_component_identities": {
+      "records": 1245,
+      "status": "complete"
+    },
+    "python_resolved_component_identities": {
+      "records": 168,
+      "status": "complete"
+    },
+    "transitive_relationship_edges": "partial"
+  },
+  "generated_at": "2026-07-25T00:00:00Z",
+  "generated_at_semantics": "normalized_artifact_timestamp_not_wall_clock_observation",
+  "generator": {
+    "dependency_policy": "standard_library_only",
+    "deterministic_timestamp": true,
+    "language": "Python"
+  },
+  "git_head_at_generation": "15a62c4bf893035f4ec2cdd2ea64affcd684634f",
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only_not_live_mvp_proof",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT",
+  "title": "Repository Technical Architecture Report"
+}

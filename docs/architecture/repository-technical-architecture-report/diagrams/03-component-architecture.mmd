@@ -1,0 +1,24 @@
+flowchart LR
+  UI["ControlRoom component"]
+  Routes["Next API routes"]
+  Security["Session and origin security"]
+  Status["Service status"]
+  TrustWiring["Persistent trust wiring"]
+  Domain["Domain schemas"]
+  Fixture["Demo fixtures"]
+  Agent["Named agent runtime"]
+  Adapter["AG-UI Codex adapter"]
+  Trust["Trust engine"]
+  Aura["AURA Bridge"]
+  Codex["Codex Bridge"]
+  UI --> Routes
+  Routes --> Security
+  Routes --> Status
+  Routes --> TrustWiring
+  UI --> Domain
+  UI --> Fixture
+  UI --> Agent
+  Agent --> Adapter
+  TrustWiring --> Trust
+  Routes --> Aura
+  Adapter --> Codex

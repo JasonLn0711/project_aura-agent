@@ -1,0 +1,103 @@
+{
+  "$schema": "voiss.repository-architecture.codex-event-mappings.v1",
+  "coverage": {
+    "adapter_mapping": "complete_for_current_bridge_event_families",
+    "bridge_event_families": "complete_for_current_server_emissions"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "services/codex-bridge/src/server.ts",
+      "purpose": "HTTP event envelope mapping",
+      "reference": "services/codex-bridge/src/server.ts:L1731"
+    },
+    {
+      "path": "packages/ag-ui-codex-adapter/src/index.ts",
+      "purpose": "normalizer switch including bounded plan delta",
+      "reference": "packages/ag-ui-codex-adapter/src/index.ts:L311"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "adapter": "mapped",
+      "bridge_event": "run.started",
+      "http_method": "thread/started"
+    },
+    {
+      "adapter": "mapped",
+      "bridge_event": "turn.started",
+      "http_method": "turn/started"
+    },
+    {
+      "adapter": "mapped",
+      "bridge_event": "item.started",
+      "http_method": "item/started"
+    },
+    {
+      "adapter": "mapped",
+      "bridge_event": "item.completed",
+      "http_method": "item/completed"
+    },
+    {
+      "adapter": "mapped",
+      "bridge_event": "message.delta",
+      "http_method": "item/agentMessage/delta"
+    },
+    {
+      "adapter": "mapped_to_bounded_redacted_plan_activity",
+      "bridge_event": "plan.delta",
+      "finding": "F-ADAPTER-PLAN-DELTA",
+      "http_method": "item/plan/delta"
+    },
+    {
+      "adapter": "mapped",
+      "bridge_event": "plan.updated",
+      "http_method": "turn/plan/updated"
+    },
+    {
+      "adapter": "mapped",
+      "bridge_event": "command.output",
+      "http_method": "item/commandExecution/outputDelta"
+    },
+    {
+      "adapter": "mapped",
+      "bridge_event": "file.patch",
+      "http_method": "item/fileChange/patchUpdated"
+    },
+    {
+      "adapter": "mapped",
+      "bridge_event": "diff.updated",
+      "http_method": "turn/diff/updated"
+    },
+    {
+      "adapter": "mapped_to_interrupt",
+      "bridge_event": "approval.requested",
+      "http_method": "item/commandExecution/requestApproval or item/fileChange/requestApproval"
+    },
+    {
+      "adapter": "mapped",
+      "bridge_event": "approval.resolved",
+      "http_method": "serverRequest/resolved"
+    },
+    {
+      "adapter": "mapped_terminal",
+      "bridge_event": "turn.completed",
+      "http_method": "turn/completed"
+    },
+    {
+      "adapter": "mapped_terminal",
+      "bridge_event": "run.error",
+      "http_method": "error"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

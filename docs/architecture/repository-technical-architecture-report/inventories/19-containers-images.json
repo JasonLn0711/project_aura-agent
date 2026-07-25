@@ -1,0 +1,76 @@
+{
+  "$schema": "voiss.repository-architecture.containers-images.v1",
+  "coverage": {
+    "assessment": "verified_rootless_podman_codex_target_lane_on_one_host",
+    "compose_manifests": 0,
+    "container_images": 1,
+    "containerfiles": 1,
+    "kubernetes_manifests": 0,
+    "runtime_wrappers": 1,
+    "scope_control": "Next_Web_AURA_Bridge_and_desktop_remain_host_processes"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "services/codex-bridge/Containerfile",
+      "purpose": "digest-pinned Codex runtime image source",
+      "reference": "services/codex-bridge/Containerfile:L1"
+    },
+    {
+      "path": "services/codex-bridge/run-in-podman.sh",
+      "purpose": "rootless Podman mount and launch wrapper",
+      "reference": "services/codex-bridge/run-in-podman.sh:L30"
+    },
+    {
+      "path": "docs/validation/2026-07-24-local-e2e.md",
+      "purpose": "retained image and live target-runtime evidence",
+      "reference": "docs/validation/2026-07-24-local-e2e.md:L97"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "base_digest": "sha256:c4a8d5503dfb2a3eb8ab5f807da5bc69a85730fb49b5cfca2330194ebcc41c7b",
+      "base_image": "docker.io/library/ubuntu:24.04",
+      "engine": "rootless Podman",
+      "id": "voiss-codex-runtime-image",
+      "kind": "oci_image",
+      "local_tag": "localhost/voiss-codex-runtime:0.145.0",
+      "manifest": "services/codex-bridge/Containerfile",
+      "observed_image_digest": "sha256:5f442b726a16550240a8ab38898632fa0d127fb52041caa3d7a656e518d27d38",
+      "observed_image_id": "9c379b112906ca025141698d28e5ac166c7839f5ccee281bd29661f58a32a157",
+      "rebuild_limit": "base_digest_pinned_but_apt_package_versions_not_pinned",
+      "status": "verified_single_host_build_and_live_flow"
+    },
+    {
+      "direct_host_alternative": "blocked_on_verified_host_until_targeted_AppArmor_preflight_passes",
+      "id": "voiss-codex-podman-wrapper",
+      "image_selector": "CODEX_PODMAN_IMAGE",
+      "kind": "runtime_wrapper",
+      "path": "services/codex-bridge/run-in-podman.sh",
+      "read_only_mounts": [
+        "CODEX_VENDOR_DIR",
+        "CODEX_AUTH_FILE"
+      ],
+      "read_write_mounts": [
+        "VOISS_ALLOWED_REPOSITORIES",
+        "VOISS_WORKTREE_ROOT_when_configured",
+        "CODEX_EXPORT_ROOT_when_configured"
+      ],
+      "security_options": [
+        "label=disable"
+      ],
+      "status": "verified_single_controlled_fixture_flow",
+      "target_sandbox": "official Codex managed-bubblewrap nested inside rootless Podman"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

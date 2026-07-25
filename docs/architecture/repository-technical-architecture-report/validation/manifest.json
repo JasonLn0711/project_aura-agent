@@ -1,0 +1,353 @@
+{
+  "$schema": "voiss.repository-architecture.validation-manifest.v1",
+  "artifacts": [
+    {
+      "bytes": 2504,
+      "path": "README.md",
+      "sha256": "eba7d7620babe655548d5dcdd016860a182154bb45472c5145b1b49b1031021c"
+    },
+    {
+      "bytes": 604,
+      "path": "diagrams/01-c4-system-context.mmd",
+      "sha256": "5214a47f30a847c7c723a853dc60efef0fa74303d7ec86f5163c196bd502a1d2"
+    },
+    {
+      "bytes": 869,
+      "path": "diagrams/02-c4-container.mmd",
+      "sha256": "07a0c0de157f8e4528c4c7705812752e1d8fee33fab3a1f973584b1cc2863fff"
+    },
+    {
+      "bytes": 582,
+      "path": "diagrams/03-component-architecture.mmd",
+      "sha256": "d763d6f4980b699c2678a2b15cea852de70ecbadb42cf91207ac86b23298f1bc"
+    },
+    {
+      "bytes": 670,
+      "path": "diagrams/04-runtime-flow.mmd",
+      "sha256": "c1426d7c349c6636e64b70bd1c03275c062c584dcd7726abe21255c0894184d2"
+    },
+    {
+      "bytes": 994,
+      "path": "diagrams/05-meeting-to-execution-sequence.mmd",
+      "sha256": "312577214adc9cb970689ada715458a5e25bde13fdf485cec814f51085b056b3"
+    },
+    {
+      "bytes": 1025,
+      "path": "diagrams/06-codex-approval-sequence.mmd",
+      "sha256": "50a3bcbca34792bc4a94a3a2cdda69716a590fa76cc4b1e50fa04b52c45e6927"
+    },
+    {
+      "bytes": 480,
+      "path": "diagrams/07-data-flow.mmd",
+      "sha256": "2be623be6ce2cb5a421f155164f2e550b3c5d5e9ee3de671fb6f76a7c083346c"
+    },
+    {
+      "bytes": 1014,
+      "path": "diagrams/08-deployment.mmd",
+      "sha256": "7a8cb749112caaf06e88eebda35d70a3ce7efab8f30569527618a93c3e6d29fb"
+    },
+    {
+      "bytes": 763,
+      "path": "diagrams/09-security-boundaries.mmd",
+      "sha256": "9ea7ee6a225c0ef71fbbb554655053eb4aabb1416b3fb27f9eee203423dcdae7"
+    },
+    {
+      "bytes": 585,
+      "path": "diagrams/10-internal-dependency-graph.mmd",
+      "sha256": "85deb22258318cb1ce192ca2f1db8b386c81d5db8ae66b475580e2f07f1176f6"
+    },
+    {
+      "bytes": 397,
+      "path": "diagrams/11-evidence-lifecycle.mmd",
+      "sha256": "4e5909a1687c0b450c69370afce7a16535d6c2069263847d970ba448b6c24eb6"
+    },
+    {
+      "bytes": 380,
+      "path": "diagrams/12-trust-control-lifecycle.mmd",
+      "sha256": "0dc33d4bceca3abc7ec67145116a1a792cd473d2cc9074ea57e0ce94b905344a"
+    },
+    {
+      "bytes": 168422,
+      "path": "generate.py",
+      "sha256": "76575b34c8d51a8a6d29680405ed8b4905a8b27b09420bf215302c3169ed3e17"
+    },
+    {
+      "bytes": 3613,
+      "path": "inventories/01-components.json",
+      "sha256": "0fe3fd50363f241a99865294bb9024f7928ce6548ef1fbac52904783d908ecbb"
+    },
+    {
+      "bytes": 3313,
+      "path": "inventories/02-entry-points.json",
+      "sha256": "91c9130b97872c840852c18f93ccf7c2da1045c9ec2a2a1e811e195ac5c06c38"
+    },
+    {
+      "bytes": 5172,
+      "path": "inventories/03-apis-interfaces.json",
+      "sha256": "b5fa6faf9a61cf356259ffb6e57d30bd7e8fbe7ca17e4574280b89d3ea837d14"
+    },
+    {
+      "bytes": 2903,
+      "path": "inventories/04-ag-ui-event-contracts.json",
+      "sha256": "053f22b3c2b28f90b5b23f5a1168cf3b63beaca06d8bcf1860a139da9e587416"
+    },
+    {
+      "bytes": 3059,
+      "path": "inventories/05-codex-event-mappings.json",
+      "sha256": "4c94d721730add80e0fb87823326acf360bf8a8e02d4e25939df77cf17315dc4"
+    },
+    {
+      "bytes": 14108,
+      "path": "inventories/06-environment-variables.json",
+      "sha256": "5484c6a80d46ef73a8a44d9dea405b753a5a496601b65e48c9279044a2d49070"
+    },
+    {
+      "bytes": 7865,
+      "path": "inventories/07-external-services.json",
+      "sha256": "fd7bb441e3d045aedba77017e7ee4f0d5ccce878f335ae850e72c04e608908d9"
+    },
+    {
+      "bytes": 4295,
+      "path": "inventories/08-databases-stores.json",
+      "sha256": "bf367df1356375ddb42088346ec2e7404518ffe80aae5c51d40a242526e37c31"
+    },
+    {
+      "bytes": 2388,
+      "path": "inventories/09-queues-events.json",
+      "sha256": "156d11764f80be7304ca8e505da86d88752047dfa4d79bd16765fd86f4cb45b5"
+    },
+    {
+      "bytes": 541567,
+      "path": "inventories/10-dependencies.json",
+      "sha256": "acdfb0a4f707621f347b975b2c8b3e1ef0a9828aa9aaf45de5c17a63189d9ced"
+    },
+    {
+      "bytes": 467237,
+      "path": "inventories/11-licenses.json",
+      "sha256": "171ac4eecdd2dfa8fb2d4a74f63af4b1cec9976c45736b6a5606d7746902c74f"
+    },
+    {
+      "bytes": 18367,
+      "path": "inventories/12-tests.json",
+      "sha256": "6137360ae7b0d94a64240321a788d69df6aa36e7043fa7f137c301915772ed08"
+    },
+    {
+      "bytes": 5998,
+      "path": "inventories/13-risks.json",
+      "sha256": "ef520293ce4545f7dbc3fc810fe6b860638c670c069c9936ba142ff86180a8d6"
+    },
+    {
+      "bytes": 6001,
+      "path": "inventories/14-controls.json",
+      "sha256": "e3a4d12e9e2b43ca575b53bf213e4df674f1a4e53e7f5cc7bed52d26a8c5b343"
+    },
+    {
+      "bytes": 2886,
+      "path": "inventories/15-assets.json",
+      "sha256": "695b516983b34902c403f4430a86f6bfe3c3798edc5905253f0c4313d1f040ce"
+    },
+    {
+      "bytes": 3172,
+      "path": "inventories/16-findings.json",
+      "sha256": "2ad99d75599add6f5f02abf3421f78a798367ceca4954086d7e3673181ceeed8"
+    },
+    {
+      "bytes": 1363,
+      "path": "inventories/17-scheduled-jobs.json",
+      "sha256": "30a5090a3f874741551ea4481608274d02941a5f9e8db69abdf3c463c2568837"
+    },
+    {
+      "bytes": 1507,
+      "path": "inventories/18-ci-workflows.json",
+      "sha256": "93e2c1ef9ba8a13afa169b873c99efdd7e2faa5b28d07073ae0e8270dcf10ce5"
+    },
+    {
+      "bytes": 3052,
+      "path": "inventories/19-containers-images.json",
+      "sha256": "78689ea70aa658c9dd0b70c9d5933a0f439a06226d59bf2fe539b84316b9f8d1"
+    },
+    {
+      "bytes": 2656,
+      "path": "metadata.json",
+      "sha256": "d4102edc1922cf8b3f0026b2464eab6587ca4cde134d9b8f7a808898d73ebe56"
+    },
+    {
+      "bytes": 3609,
+      "path": "reports/01-executive-summary.md",
+      "sha256": "37d8cf0b64c8ea0c2af2b218ef307b66c984f8163b4e7d1c20ad78b8e9aa3c0e"
+    },
+    {
+      "bytes": 3061,
+      "path": "reports/02-repository-map.md",
+      "sha256": "1862005a0bb1424bcb6ae1f15359dd16f48e33630ebc3f9d9068a7794f327307"
+    },
+    {
+      "bytes": 3296,
+      "path": "reports/03-technology-stack-inventory.md",
+      "sha256": "7acce714c2e94d5f8c16740a796ab90a75830510d6524710002ac986171a440a"
+    },
+    {
+      "bytes": 2089,
+      "path": "reports/04-c4-system-context.md",
+      "sha256": "f6d655b87477f63e314d4961ec037a951024839f8ed5acd59008184fe1506447"
+    },
+    {
+      "bytes": 2547,
+      "path": "reports/05-c4-container-architecture.md",
+      "sha256": "b6650cfe58f6852e43c48be4654847e739313fd429b3977b8bf7de7bbd455341"
+    },
+    {
+      "bytes": 2550,
+      "path": "reports/06-component-architecture.md",
+      "sha256": "73ce3931e440b2bb17e733af73fa9237dd18a439e4be1ddaa3f161dc93266e99"
+    },
+    {
+      "bytes": 3690,
+      "path": "reports/07-runtime-and-data-flow.md",
+      "sha256": "34dce8344a20c770bdfa9e1e26edc3628714f5c809a2e443a068e721a03915da"
+    },
+    {
+      "bytes": 2270,
+      "path": "reports/08-api-and-interface-inventory.md",
+      "sha256": "1cc6fa9f25360c7be8765bbc9a9e30e65251e55e18175efc3058dd38acd4b2df"
+    },
+    {
+      "bytes": 2063,
+      "path": "reports/09-dependency-graph-and-analysis.md",
+      "sha256": "dc8e58fa12d1ef224e1054af8c94921ffd59caab3c926edc698634fc6469322f"
+    },
+    {
+      "bytes": 2315,
+      "path": "reports/10-sbom.md",
+      "sha256": "284ef7c1ed2a5b85e805af5121782b2a07814c0018b29d60fbcd3ffbf22190bd"
+    },
+    {
+      "bytes": 2834,
+      "path": "reports/11-build-and-deployment-architecture.md",
+      "sha256": "abe49d523d5194a63e9bef01c1986dafbc9b16082eb418c6952766d3dccf334f"
+    },
+    {
+      "bytes": 2532,
+      "path": "reports/12-configuration-and-environment-variables.md",
+      "sha256": "4ddd77d7c8ec1e48591e5a712489363fd033f2ac6ef80026ebcac700181825c0"
+    },
+    {
+      "bytes": 3429,
+      "path": "reports/13-security-boundaries.md",
+      "sha256": "dda20b7b5e08a5fc0b1b09f5c9f23ac90a97f7f39f4e5d01b7e3b99409771731"
+    },
+    {
+      "bytes": 2584,
+      "path": "reports/14-architecture-decision-records.md",
+      "sha256": "8eba69740492942e884d0c439ed7ddb4325551eb3f5e077c024e4b0a0fe2f6b5"
+    },
+    {
+      "bytes": 2526,
+      "path": "reports/15-risks-and-technical-debt.md",
+      "sha256": "97c619284dcc0125a8f46af8a2bd718d8f6f4f053c57f55fd6a189d227f74135"
+    },
+    {
+      "bytes": 2542,
+      "path": "reports/16-local-development-and-execution-guide.md",
+      "sha256": "c5fc3d3156e56be19c6580d1c74e0140e5eb1df207befb9be2d715060158a4ab"
+    },
+    {
+      "bytes": 3171,
+      "path": "reports/17-testing-and-quality-strategy.md",
+      "sha256": "096bbc63229db8ff30d94fb2ccfc95bb167d4166397c34c1bac34a1603254597"
+    },
+    {
+      "bytes": 3340,
+      "path": "reports/18-observability-and-operations.md",
+      "sha256": "110d117f2fc0614ecdfc5ac3ce71835beb19d4843aad7390fdda34991cd1ae0a"
+    },
+    {
+      "bytes": 3352,
+      "path": "reports/19-data-storage-retention-and-lifecycle.md",
+      "sha256": "8c029a2105c24951381ea30114c9e3271534dec173b63fa2d392ee7a1193c8bf"
+    },
+    {
+      "bytes": 2878,
+      "path": "reports/20-open-questions-unknowns-and-release-gates.md",
+      "sha256": "43a9e3d0c9ccb7b2be4fe1691d2b4553dcd5ba29869a71bf0935f13577352893"
+    },
+    {
+      "bytes": 824360,
+      "path": "sbom/cyclonedx.json",
+      "sha256": "a7bd41406761600a1aeb36ec473bdb91cd98c9deeb4ddb7d508d15a91224ba97"
+    },
+    {
+      "bytes": 895758,
+      "path": "sbom/spdx.json",
+      "sha256": "ded46504473311c6d932440e67bae08b0b854e4a0355b458addf637b78b81f36"
+    }
+  ],
+  "checks": [
+    {
+      "id": "exact_counts",
+      "status": "PASS"
+    },
+    {
+      "id": "json_parse",
+      "status": "PASS"
+    },
+    {
+      "id": "inventory_envelopes",
+      "status": "PASS"
+    },
+    {
+      "id": "dependency_identity_coverage",
+      "status": "PASS"
+    },
+    {
+      "id": "sbom_minimum_structure",
+      "status": "PASS"
+    },
+    {
+      "id": "package_snapshot_coherence",
+      "status": "PASS"
+    },
+    {
+      "id": "report_required_sections",
+      "status": "PASS"
+    },
+    {
+      "id": "mermaid_source_header",
+      "status": "PASS"
+    },
+    {
+      "id": "retained_validation_record",
+      "status": "PASS"
+    },
+    {
+      "id": "retained_demo_screenshot_digest",
+      "status": "PASS"
+    },
+    {
+      "id": "source_snapshot",
+      "status": "PASS"
+    },
+    {
+      "id": "artifact_checksums",
+      "status": "PASS"
+    }
+  ],
+  "checksum_scope": "all package files except validation/manifest.json and validation/checksums.sha256",
+  "expected_counts": {
+    "inventories": 19,
+    "mermaid_sources": 12,
+    "reports": 20,
+    "sboms": 2
+  },
+  "observed_counts": {
+    "inventories": 19,
+    "mermaid_sources": 12,
+    "reports": 20,
+    "sboms": 2
+  },
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_snapshot_sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+  "status": "PASS",
+  "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation",
+  "validated_at": "2026-07-25T00:00:00Z"
+}

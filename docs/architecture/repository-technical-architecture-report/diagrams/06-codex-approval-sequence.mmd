@@ -1,0 +1,24 @@
+sequenceDiagram
+  actor User
+  participant Web
+  participant Bridge as Codex Bridge
+  participant Git
+  participant Codex as Codex app-server
+  Web->>Bridge: POST run in plan scope
+  Bridge->>Codex: read-only, network-off, on-request
+  Codex-->>Web: plan events
+  User->>Web: request isolated write scope
+  Web->>Bridge: POST run with codexMode write
+  Bridge-->>Web: staged write-activation approval, no worktree yet
+  User->>Web: approve or deny staged activation
+  Web->>Bridge: resume exact activation request id
+  Bridge->>Git: create isolated worktree
+  Bridge->>Codex: start write-capable turn, network-off
+  Codex-->>Bridge: named command or file request
+  Bridge-->>Web: approval interrupt
+  User->>Web: accept once, accept run scope, or decline
+  Web->>Bridge: resume exact pending request id
+  Bridge->>Codex: narrow response
+  Codex-->>Web: events and terminal result
+  Bridge->>Bridge: compare validation hash and generation with frozen terminal patch
+  Bridge-->>Web: export only when authoritative gate passes

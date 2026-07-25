@@ -1,0 +1,24 @@
+flowchart TD
+  Web["@voiss/aura-web"]
+  Domain["@voiss/domain"]
+  Fixture["@voiss/demo-fixtures"]
+  Trust["@voiss/trust-engine"]
+  Agent["@voiss/agent-runtime"]
+  Adapter["@voiss/ag-ui-codex-adapter"]
+  AuraBridge["voiss-aura-bridge"]
+  CodexBridge["@voiss/codex-bridge"]
+  AuraCore["project-aura-refactor"]
+  AGUI["@ag-ui/client"]
+  Web --> Domain
+  Web --> Fixture
+  Web --> Trust
+  Web --> Agent
+  Web --> Adapter
+  Fixture --> Domain
+  Trust --> Domain
+  Agent --> Fixture
+  Agent --> Adapter
+  Adapter --> AGUI
+  Web --> AuraBridge
+  Web --> CodexBridge
+  AuraBridge --> AuraCore

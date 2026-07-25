@@ -1,0 +1,15 @@
+stateDiagram-v2
+  [*] --> RawEvidence
+  RawEvidence --> Indexed
+  Indexed --> Reviewed
+  Reviewed --> Confirmed
+  Reviewed --> Rejected
+  Confirmed --> SupportedAction
+  SupportedAction --> Delegated
+  Delegated --> ApprovalRequired
+  ApprovalRequired --> Running: allow
+  ApprovalRequired --> Stopped: deny
+  Running --> Validated
+  Running --> Failed
+  Validated --> Exported
+  Exported --> [*]

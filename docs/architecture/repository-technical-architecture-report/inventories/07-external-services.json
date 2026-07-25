@@ -1,0 +1,188 @@
+{
+  "$schema": "voiss.repository-architecture.external-services.v1",
+  "coverage": {
+    "claim_ceiling": "single_host_single_fixture_not_production_or_multi_repository_repeatability",
+    "internal_loopback_services": "complete",
+    "live_availability": "one_controlled_fixture_flow_retained_for_AURA_Codex_and_browser",
+    "models_native_and_provider_runtimes": "partial_curated_source_detected"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "src/aura/system/runtime_report.py",
+      "purpose": "host/runtime diagnostic surface",
+      "reference": "src/aura/system/runtime_report.py:L177"
+    },
+    {
+      "path": "docs/validation/2026-07-24-local-e2e.md",
+      "purpose": "retained one-run live runtime evidence",
+      "reference": "docs/validation/2026-07-24-local-e2e.md:L57"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "coverage": "curated_source_detected",
+      "evidence": "src/aura/config.py",
+      "id": "model:faster-whisper-breeze-asr-25",
+      "kind": "model",
+      "name": "SoybeanMilk/faster-whisper-Breeze-ASR-25",
+      "network_scope": "local_loopback_or_provider_managed_as_named",
+      "purpose": "local ASR",
+      "runtime_status": "external_runtime_activation_required"
+    },
+    {
+      "coverage": "curated_source_detected",
+      "evidence": "src/aura/config.py",
+      "id": "model:pyannote-speaker-diarization-community-1",
+      "kind": "model",
+      "name": "pyannote/speaker-diarization-community-1",
+      "network_scope": "local_loopback_or_provider_managed_as_named",
+      "purpose": "speaker diarization",
+      "runtime_status": "external_runtime_activation_required"
+    },
+    {
+      "coverage": "curated_source_detected",
+      "evidence": "src/aura/config.py",
+      "id": "model:zh-wiki-punctuation-restore",
+      "kind": "model",
+      "name": "p208p2002/zh-wiki-punctuation-restore",
+      "network_scope": "local_loopback_or_provider_managed_as_named",
+      "purpose": "Traditional Chinese punctuation restoration",
+      "runtime_status": "external_runtime_activation_required"
+    },
+    {
+      "coverage": "curated_source_detected",
+      "evidence": "src/summary/field_schemas.py",
+      "id": "model:gemma-4-e4b-it",
+      "kind": "model",
+      "name": "google/gemma-4-E4B-it",
+      "network_scope": "local_loopback_or_provider_managed_as_named",
+      "purpose": "local meeting summary through Ollama",
+      "runtime_alias": "gemma4:e4b-it-qat",
+      "runtime_status": "external_runtime_activation_required"
+    },
+    {
+      "coverage": "curated_source_detected",
+      "evidence": "src/aura/audio/enhancement_backends.py",
+      "id": "model:mossformer2-se-48k",
+      "kind": "model",
+      "name": "MossFormer2_SE_48K",
+      "network_scope": "local_loopback_or_provider_managed_as_named",
+      "purpose": "optional ClearVoice speech enhancement",
+      "runtime_status": "separate_python_runtime_activation_required"
+    },
+    {
+      "coverage": "curated_source_detected",
+      "evidence": "docs/validation/2026-07-24-local-e2e.md",
+      "id": "model:gpt-5.6-sol",
+      "kind": "hosted_model",
+      "name": "gpt-5.6-sol",
+      "network_scope": "local_loopback_or_provider_managed_as_named",
+      "purpose": "Codex engineering delegation",
+      "runtime_status": "verified_one_controlled_fixture_flow"
+    },
+    {
+      "coverage": "curated_source_detected",
+      "evidence": "src/aura/llm/ollama_runtime.py",
+      "id": "runtime:ollama",
+      "kind": "local_model_runtime",
+      "name": "Ollama",
+      "network_scope": "local_loopback_or_provider_managed_as_named",
+      "purpose": "Gemma 4 inference",
+      "runtime_status": "local_service_activation_required"
+    },
+    {
+      "coverage": "curated_source_detected",
+      "evidence": "docs/validation/2026-07-24-local-e2e.md",
+      "id": "runtime:codex-app-server",
+      "kind": "local_agent_runtime",
+      "name": "Codex app-server",
+      "network_scope": "local_loopback_or_provider_managed_as_named",
+      "purpose": "official Codex JSON-RPC execution",
+      "required_version": "0.145.0",
+      "runtime_status": "verified_single_host_rootless_podman_target_lane"
+    },
+    {
+      "coverage": "curated_source_detected",
+      "evidence": "src/aura/audio/enhancement_backends.py",
+      "id": "runtime:clearvoice-python",
+      "kind": "separate_python_runtime",
+      "name": "ClearVoice external Python environment",
+      "network_scope": "local_loopback_or_provider_managed_as_named",
+      "purpose": "optional isolated MossFormer2 speech-enhancement execution",
+      "runtime_status": "AURA_CLEARVOICE_PYTHON_activation_required"
+    },
+    {
+      "coverage": "curated_source_detected",
+      "evidence": "src/aura/system/cuda.py",
+      "id": "runtime:nvidia-cuda",
+      "kind": "native_accelerator_runtime",
+      "name": "NVIDIA driver and CUDA/cuBLAS/cuDNN",
+      "network_scope": "local_loopback_or_provider_managed_as_named",
+      "purpose": "GPU model inference",
+      "runtime_status": "host_specific_activation_required"
+    },
+    {
+      "coverage": "curated_source_detected",
+      "digest": "sha256:c4a8d5503dfb2a3eb8ab5f807da5bc69a85730fb49b5cfca2330194ebcc41c7b",
+      "evidence": "services/codex-bridge/Containerfile",
+      "id": "container:ubuntu-24.04-codex-runtime-base",
+      "kind": "container_base_image",
+      "name": "ubuntu:24.04",
+      "network_scope": "local_loopback_or_provider_managed_as_named",
+      "purpose": "digest-pinned base for the verified rootless Podman Codex lane",
+      "required_version": "24.04",
+      "runtime_status": "verified_single_host_build_apt_versions_not_pinned"
+    },
+    {
+      "coverage": "partial_curated_source_detected",
+      "evidence": "src/aura/config.py",
+      "id": "service:hugging-face-hub",
+      "kind": "external_artifact_source",
+      "name": "Hugging Face Hub",
+      "network_scope": "external_during_explicit_model_acquisition",
+      "purpose": "optional acquisition of declared ASR, diarization, and punctuation model artifacts",
+      "runtime_status": "network_or_prepopulated_cache_activation_required"
+    },
+    {
+      "coverage": "partial_curated_source_detected",
+      "evidence": "docs/validation/2026-07-24-local-e2e.md",
+      "id": "service:codex-provider",
+      "kind": "external_agent_provider",
+      "name": "Codex model provider",
+      "network_scope": "owned_by_codex_app_server_not_browser_or_bridge_policy",
+      "purpose": "authenticated gpt-5.6-sol execution mediated by official Codex app-server",
+      "runtime_status": "verified_one_controlled_fixture_flow"
+    },
+    {
+      "coverage": "complete_internal_service",
+      "evidence": "docs/validation/2026-07-24-local-e2e.md",
+      "id": "service:aura-bridge",
+      "kind": "loopback_http",
+      "name": "AURA Bridge",
+      "network_scope": "127.0.0.1",
+      "purpose": "canonical meeting evidence",
+      "runtime_status": "verified_one_controlled_fixture_flow"
+    },
+    {
+      "coverage": "complete_internal_service",
+      "evidence": "docs/validation/2026-07-24-local-e2e.md",
+      "id": "service:codex-bridge",
+      "kind": "loopback_http",
+      "name": "Codex Bridge",
+      "network_scope": "127.0.0.1",
+      "purpose": "Codex mediation and approvals",
+      "runtime_status": "verified_one_controlled_fixture_flow_via_rootless_podman"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

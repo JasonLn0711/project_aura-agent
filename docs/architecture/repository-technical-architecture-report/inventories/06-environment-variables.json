@@ -1,0 +1,491 @@
+{
+  "$schema": "voiss.repository-architecture.environment-variables.v1",
+  "coverage": {
+    "ambient_os_variables": "bounded_to_explicitly_consumed_or_forwarded_names",
+    "runtime_contract_variables": "complete_curated_from_current_source",
+    "test_only_variables": "excluded"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "apps/voiss-aura-web/lib/security.ts",
+      "purpose": "web session boundary",
+      "reference": "apps/voiss-aura-web/lib/security.ts:L12"
+    },
+    {
+      "path": "services/aura-bridge/src/aura_bridge/cli.py",
+      "purpose": "AURA Bridge configuration",
+      "reference": "services/aura-bridge/src/aura_bridge/cli.py:L33"
+    },
+    {
+      "path": "services/codex-bridge/src/cli.ts",
+      "purpose": "Codex Bridge configuration",
+      "reference": "services/codex-bridge/src/cli.ts:L12"
+    },
+    {
+      "path": "services/codex-bridge/run-in-podman.sh",
+      "purpose": "Podman wrapper configuration and mount policy",
+      "reference": "services/codex-bridge/run-in-podman.sh:L4"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "default_or_gate": "demo unless local",
+      "group": "web",
+      "name": "VOISS_MODE",
+      "purpose": "demo/local mode selection",
+      "secret": false
+    },
+    {
+      "default_or_gate": "required local secret",
+      "group": "web",
+      "name": "VOISS_SESSION_SECRET",
+      "purpose": "signed same-origin session cookie",
+      "secret": true
+    },
+    {
+      "default_or_gate": "loopback origin",
+      "group": "web",
+      "name": "VOISS_WEB_ORIGINS",
+      "purpose": "allowed browser origins",
+      "secret": false
+    },
+    {
+      "default_or_gate": ".voiss/control-plane.sqlite",
+      "group": "web",
+      "name": "VOISS_DB_PATH",
+      "purpose": "persistent trust SQLite path",
+      "secret": false
+    },
+    {
+      "default_or_gate": ".voiss/agent-runs.sqlite",
+      "group": "web",
+      "name": "VOISS_AGENT_DB_PATH",
+      "purpose": "CopilotKit runner SQLite path",
+      "secret": false
+    },
+    {
+      "default_or_gate": "required local",
+      "group": "web",
+      "name": "AURA_BRIDGE_URL",
+      "purpose": "AURA loopback service URL",
+      "secret": false
+    },
+    {
+      "default_or_gate": "required local",
+      "group": "web",
+      "name": "AURA_BRIDGE_TOKEN",
+      "purpose": "AURA bearer token",
+      "secret": true
+    },
+    {
+      "default_or_gate": "required local",
+      "group": "web",
+      "name": "CODEX_BRIDGE_URL",
+      "purpose": "Codex loopback service URL",
+      "secret": false
+    },
+    {
+      "default_or_gate": "required local",
+      "group": "web",
+      "name": "CODEX_BRIDGE_TOKEN",
+      "purpose": "Codex bearer token",
+      "secret": true
+    },
+    {
+      "default_or_gate": "tool-managed",
+      "group": "web",
+      "name": "NODE_ENV",
+      "purpose": "Next.js environment and cookie/CSP behavior",
+      "secret": false
+    },
+    {
+      "default_or_gate": "required",
+      "group": "aura_bridge",
+      "name": "AURA_ARTIFACT_ROOT",
+      "purpose": "canonical AURA artifact root",
+      "secret": false
+    },
+    {
+      "default_or_gate": "8765",
+      "group": "aura_bridge",
+      "name": "AURA_BRIDGE_PORT",
+      "purpose": "loopback port",
+      "secret": false
+    },
+    {
+      "default_or_gate": "required",
+      "group": "aura_bridge",
+      "name": "AURA_BRIDGE_TOKEN",
+      "purpose": "bearer token",
+      "secret": true
+    },
+    {
+      "default_or_gate": "http://127.0.0.1:3000",
+      "group": "aura_bridge",
+      "name": "AURA_ALLOWED_ORIGINS",
+      "purpose": "allowed same-origin callers",
+      "secret": false
+    },
+    {
+      "default_or_gate": "state/evidence.sqlite3",
+      "group": "aura_bridge",
+      "name": "AURA_EVIDENCE_INDEX",
+      "purpose": "evidence SQLite path",
+      "secret": false
+    },
+    {
+      "default_or_gate": "state/audit",
+      "group": "aura_bridge",
+      "name": "AURA_AUDIT_ROOT",
+      "purpose": "audit JSONL root",
+      "secret": false
+    },
+    {
+      "default_or_gate": "state/exports",
+      "group": "aura_bridge",
+      "name": "VOISS_EXPORT_ROOT",
+      "purpose": "reviewed export root",
+      "secret": false
+    },
+    {
+      "default_or_gate": "required",
+      "group": "codex_bridge",
+      "name": "CODEX_BRIDGE_TOKEN",
+      "purpose": "bearer token",
+      "secret": true
+    },
+    {
+      "default_or_gate": "required",
+      "group": "codex_bridge",
+      "name": "VOISS_ALLOWED_REPOSITORIES",
+      "purpose": "explicit repository allowlist",
+      "secret": false
+    },
+    {
+      "default_or_gate": "optional",
+      "group": "codex_bridge",
+      "name": "VOISS_ALLOWED_REPO_ROOTS",
+      "purpose": "legacy alias for allowlist roots",
+      "secret": false
+    },
+    {
+      "default_or_gate": "http://127.0.0.1:3000",
+      "group": "codex_bridge",
+      "name": "CODEX_ALLOWED_ORIGINS",
+      "purpose": "allowed caller origins",
+      "secret": false
+    },
+    {
+      "default_or_gate": "optional",
+      "group": "codex_bridge",
+      "name": "VOISS_ALLOWED_ORIGINS",
+      "purpose": "generic allowed-caller origin alias",
+      "secret": false
+    },
+    {
+      "default_or_gate": "8770",
+      "group": "codex_bridge",
+      "name": "CODEX_BRIDGE_PORT",
+      "purpose": "loopback port",
+      "secret": false
+    },
+    {
+      "default_or_gate": "implementation default",
+      "group": "codex_bridge",
+      "name": "CODEX_PROCESS_TIMEOUT_SECONDS",
+      "purpose": "Codex child-process ceiling",
+      "secret": false
+    },
+    {
+      "default_or_gate": "implementation default",
+      "group": "codex_bridge",
+      "name": "CODEX_REQUEST_TIMEOUT_SECONDS",
+      "purpose": "JSON-RPC request ceiling",
+      "secret": false
+    },
+    {
+      "default_or_gate": "300",
+      "group": "codex_bridge",
+      "name": "CODEX_APPROVAL_TIMEOUT_SECONDS",
+      "purpose": "approval pause ceiling; resume or stop remains available",
+      "secret": false
+    },
+    {
+      "default_or_gate": "codex",
+      "group": "codex_bridge",
+      "name": "CODEX_BIN",
+      "purpose": "Codex executable",
+      "secret": false
+    },
+    {
+      "default_or_gate": "OS temporary root",
+      "group": "codex_bridge",
+      "name": "VOISS_WORKTREE_ROOT",
+      "purpose": "isolated worktree parent",
+      "secret": false
+    },
+    {
+      "default_or_gate": "state path",
+      "group": "codex_bridge",
+      "name": "CODEX_EXPORT_ROOT",
+      "purpose": "sanitized evidence export root",
+      "secret": false
+    },
+    {
+      "default_or_gate": ".voiss/control-plane.sqlite",
+      "group": "codex_bridge",
+      "name": "VOISS_DB_PATH",
+      "purpose": "persistent lifecycle/control-plane SQLite path",
+      "secret": false
+    },
+    {
+      "default_or_gate": "platform state path",
+      "group": "codex_bridge",
+      "name": "VOISS_OBSERVABILITY_LOG",
+      "purpose": "bounded local JSONL log",
+      "secret": false
+    },
+    {
+      "default_or_gate": "required for verified Podman lane",
+      "group": "codex_podman_wrapper",
+      "name": "CODEX_VENDOR_DIR",
+      "purpose": "installed official Codex Linux vendor directory mounted read-only",
+      "secret": false
+    },
+    {
+      "default_or_gate": "required sensitive path for verified Podman lane",
+      "group": "codex_podman_wrapper",
+      "name": "CODEX_AUTH_FILE",
+      "purpose": "Codex auth.json locator mounted read-only",
+      "secret": true
+    },
+    {
+      "default_or_gate": "localhost/voiss-codex-runtime:0.145.0",
+      "group": "codex_podman_wrapper",
+      "name": "CODEX_PODMAN_IMAGE",
+      "purpose": "local Codex runtime image tag",
+      "secret": false
+    },
+    {
+      "default_or_gate": "optional",
+      "group": "aura_desktop",
+      "name": "AURA_CLEARVOICE_PYTHON",
+      "purpose": "separate ClearVoice interpreter",
+      "secret": false
+    },
+    {
+      "default_or_gate": "optional by model",
+      "group": "aura_desktop",
+      "name": "HUGGINGFACE_TOKEN",
+      "purpose": "model access token",
+      "secret": true
+    },
+    {
+      "default_or_gate": "optional by model",
+      "group": "aura_desktop",
+      "name": "HF_TOKEN",
+      "purpose": "model access token alias",
+      "secret": true
+    },
+    {
+      "default_or_gate": "optional",
+      "group": "aura_desktop",
+      "name": "AURA_HF_TOKEN_FILE",
+      "purpose": "local token-file locator",
+      "secret": true
+    },
+    {
+      "default_or_gate": "platform state path",
+      "group": "aura_desktop",
+      "name": "AURA_AUDIT_DIR",
+      "purpose": "audit event directory",
+      "secret": false
+    },
+    {
+      "default_or_gate": "true",
+      "group": "aura_desktop",
+      "name": "AURA_AUDIT_ENABLED",
+      "purpose": "audit activation",
+      "secret": false
+    },
+    {
+      "default_or_gate": "implementation default",
+      "group": "aura_desktop",
+      "name": "AURA_AUDIT_RETENTION_DAYS",
+      "purpose": "audit retention window",
+      "secret": false
+    },
+    {
+      "default_or_gate": "platform data path",
+      "group": "aura_desktop",
+      "name": "AURA_RUNTIME_DIR",
+      "purpose": "runtime state root",
+      "secret": false
+    },
+    {
+      "default_or_gate": "platform default",
+      "group": "aura_desktop",
+      "name": "XDG_DATA_HOME",
+      "purpose": "Linux data root",
+      "secret": false
+    },
+    {
+      "default_or_gate": "platform default",
+      "group": "aura_desktop",
+      "name": "XDG_STATE_HOME",
+      "purpose": "Linux state root",
+      "secret": false
+    },
+    {
+      "default_or_gate": "platform default",
+      "group": "aura_desktop",
+      "name": "LOCALAPPDATA",
+      "purpose": "Windows local state root",
+      "secret": false
+    },
+    {
+      "default_or_gate": "host-specific",
+      "group": "aura_desktop",
+      "name": "CUDA_PATH",
+      "purpose": "CUDA toolkit locator",
+      "secret": false
+    },
+    {
+      "default_or_gate": "host-specific",
+      "group": "aura_desktop",
+      "name": "PATH",
+      "purpose": "native executable resolution",
+      "secret": false
+    },
+    {
+      "default_or_gate": "optional",
+      "group": "aura_desktop",
+      "name": "container",
+      "purpose": "container-runtime signal",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "PATH",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "HOME",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "USER",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "LOGNAME",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "SHELL",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "LANG",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "LC_ALL",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "LC_CTYPE",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "TERM",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "COLORTERM",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "NO_COLOR",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "XDG_CONFIG_HOME",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "XDG_CACHE_HOME",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "XDG_DATA_HOME",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "XDG_STATE_HOME",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    },
+    {
+      "default_or_gate": "inherited when present",
+      "group": "codex_child_allowlist",
+      "name": "CODEX_HOME",
+      "purpose": "forwarded non-secret process context",
+      "secret": false
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

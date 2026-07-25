@@ -1,6 +1,6 @@
 # Project AURA: Local Desktop Audio Assistant
 
-![Status](https://img.shields.io/badge/Status-Maintained-brightgreen?logo=github) ![CI](https://github.com/JasonLn0711/project_aura/actions/workflows/ci.yml/badge.svg) ![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python) ![ASR Engine](https://img.shields.io/badge/ASR-faster--whisper-orange) ![UI](https://img.shields.io/badge/UI-PyQt6-9cf) ![VAD](https://img.shields.io/badge/VAD-WebRTC_VAD-success) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Status](https://img.shields.io/badge/Status-Maintained-brightgreen?logo=github) ![CI](https://github.com/JasonLn0711/project_aura-agent/actions/workflows/ci.yml/badge.svg) ![Control Room CI](https://github.com/JasonLn0711/project_aura-agent/actions/workflows/voiss-control-room.yml/badge.svg) ![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python) ![ASR Engine](https://img.shields.io/badge/ASR-faster--whisper-orange) ![UI](https://img.shields.io/badge/UI-PyQt6-9cf) ![VAD](https://img.shields.io/badge/VAD-WebRTC_VAD-success) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 Project AURA is a desktop audio assistant for real-time recording, Whisper-based transcription, batch file transcription, and smart audio splitting.
 
@@ -25,6 +25,92 @@ Use this repo for:
 - paired-corpus evidence before capability migration into Meetily
 
 Keep historical recordings and generated transcripts in `record_audio_ubuntu` or another data folder.
+
+### VOISS AURA Control Room（P0）
+
+VOISS AURA Control Room 是本 repo 的 companion web control plane。它把
+AURA canonical meeting evidence、人員覆核、已確認行動、Codex 唯讀計畫、
+明確核准、隔離工作樹、驗證、finding 與 hash-chain audit 串成一條
+local-first evidence-to-execution workflow。P0 authority 停在本機 patch 與
+evidence export；push、merge、PR、deploy 與外部訊息由另一個明確工作包啟動。
+
+Credential-free deterministic demo：
+
+```bash
+pnpm install --frozen-lockfile
+pnpm demo
+```
+
+開啟 `http://127.0.0.1:3000`。畫面固定標示 `DEMO MODE`，使用 sanitized
+fixture、synthetic audio 與 scripted events，不需要 AURA Bridge、GPU 或
+Codex 登入。
+
+Personal local mode 使用三個loopback process。先依local setup runbook設定
+各自的隨機Bearer token、AURA artifact root、允許的repository與
+owner-controlled export root。Ubuntu 24.04先選定已驗證的Podman lane，再
+啟動Bridge：
+
+```bash
+pnpm codex:runtime:build
+export CODEX_BIN=/absolute/path/to/project_aura-voiss-mvp/services/codex-bridge/run-in-podman.sh
+export CODEX_VENDOR_DIR=/absolute/path/to/codex-linux-vendor/x86_64-unknown-linux-musl
+export CODEX_AUTH_FILE=/absolute/path/to/codex-home/auth.json
+```
+
+完成runbook中的其餘server-side環境後，在三個terminal執行：
+
+```bash
+uv sync --all-extras --all-packages --frozen
+uv run aura-bridge
+pnpm --filter @voiss/codex-bridge start
+pnpm dev
+```
+
+Codex Bridge使用官方`codex app-server`與既有ChatGPT/Codex sign-in；
+credential 保留在 Codex store 與 server-side process，不進入 browser、
+audit 或 export。Ubuntu 24.04 的已驗證write lane以rootless Podman承載
+official Codex runtime，再由Codex `managed-bubblewrap`限制每個agent
+command的workspace與network authority。
+
+2026-07-25 的final-source local E2E已通過：actual AURA evidence → claim review →
+read-only Codex plan → `allow_once` → isolated worktree → real pytest與
+`git diff --check` → checksummed patch/evidence download → valid persistent
+audit chain。這份結果支持單一controlled fixture的
+`LOCAL_E2E_VALIDATED`，新的host/repository沿用相同preflight與evidence
+gate。CopilotKit runner以獨立SQLite保留
+plan → write interrupt → approval resume的parent-linked invocation history。
+完整IDs、checksums與quality matrix見
+[`docs/validation/2026-07-24-local-e2e.md`](docs/validation/2026-07-24-local-e2e.md)；
+完整啟動變數與操作順序見
+[`docs/runbooks/local-setup.md`](docs/runbooks/local-setup.md)，五分鐘 demo 見
+[`docs/demo/five-minute-demo.md`](docs/demo/five-minute-demo.md)，安全邊界見
+[`docs/security-model.md`](docs/security-model.md)。
+
+Control Room quality gate：
+
+```bash
+pnpm format:check
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm test:e2e
+pnpm build
+uv run ruff check services/aura-bridge
+uv run ruff format --check services/aura-bridge
+uv run pytest -q services/aura-bridge/tests
+uv run pytest -q
+```
+
+Actual local runtime另以明確設定的AURA/Codex bridge與allowlisted fixture執行：
+
+```bash
+VOISS_LIVE_E2E=1 pnpm test:e2e:live
+```
+
+這個guarded suite同時需要runbook列出的AURA/Codex bridge URL/token、
+`VOISS_LIVE_REPO_ROOT`、owner-controlled`VOISS_DB_PATH`與獨立的
+`VOISS_AGENT_DB_PATH`；未設定
+`VOISS_LIVE_E2E=1`時會明確skip，不形成live claim。
 
 ### Evidence-first session workflow（2026-07-23）
 
@@ -90,7 +176,7 @@ The app is designed for professional meeting and lecture workflows. It includes 
 | Latest Published Tag | `v1.14.0` |
 | Next Release Candidate | `v1.15.0` |
 | ASR Model | `SoybeanMilk/faster-whisper-Breeze-ASR-25` |
-| GitHub Repository | `JasonLn0711/project_aura` |
+| GitHub Repository | `JasonLn0711/project_aura-agent` |
 | Academic Affiliation | National Yang Ming Chiao Tung University (NYCU) |
 | Project Lead | Jason Chia-Sheng Lin (PhD. Student) |
 | License | MIT |

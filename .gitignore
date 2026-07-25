@@ -47,6 +47,7 @@ apps/voiss-aura-web/.next/
 apps/voiss-aura-web/.next-local/
 apps/voiss-aura-web/playwright-report/
 apps/voiss-aura-web/test-results/
+docs/validation/logs/
 node_modules/
 coverage/
 *.tsbuildinfo

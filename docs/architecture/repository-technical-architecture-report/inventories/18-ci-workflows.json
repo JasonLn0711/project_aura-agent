@@ -1,0 +1,52 @@
+{
+  "$schema": "voiss.repository-architecture.ci-workflows.v1",
+  "coverage": {
+    "run_results": "not_asserted",
+    "workflow_files": "complete"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "purpose": "primary CI",
+      "reference": ".github/workflows/ci.yml"
+    },
+    {
+      "path": ".github/workflows/windows.yml",
+      "purpose": "Windows CI",
+      "reference": ".github/workflows/windows.yml"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "name": "CI",
+      "path": ".github/workflows/ci.yml",
+      "scheduled": false,
+      "status": "workflow_source_present_execution_not_asserted",
+      "triggers": [
+        "pull_request",
+        "push"
+      ]
+    },
+    {
+      "name": "Windows",
+      "path": ".github/workflows/windows.yml",
+      "scheduled": false,
+      "status": "workflow_source_present_execution_not_asserted",
+      "triggers": [
+        "pull_request",
+        "push"
+      ]
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

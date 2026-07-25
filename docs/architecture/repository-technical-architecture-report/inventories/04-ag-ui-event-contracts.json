@@ -1,0 +1,97 @@
+{
+  "$schema": "voiss.repository-architecture.ag-ui-event-contracts.v1",
+  "coverage": {
+    "normalized_event_types": "complete_for_current_adapter_switch",
+    "payload_fields": "semantic_summary"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "packages/ag-ui-codex-adapter/src/index.ts",
+      "purpose": "AG-UI normalizer",
+      "reference": "packages/ag-ui-codex-adapter/src/index.ts:L290"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "event": "RUN_STARTED",
+      "semantic": "run lifecycle",
+      "source_family": "thread/started or agent start"
+    },
+    {
+      "event": "STATE_SNAPSHOT",
+      "semantic": "initial normalized state",
+      "source_family": "thread/started"
+    },
+    {
+      "event": "ACTIVITY_SNAPSHOT",
+      "semantic": "VOISS activity envelope",
+      "source_family": "plan, command, file, diff, approval"
+    },
+    {
+      "event": "STEP_STARTED",
+      "semantic": "Codex turn step",
+      "source_family": "turn/started"
+    },
+    {
+      "event": "STATE_DELTA",
+      "semantic": "JSON Patch-like state change",
+      "source_family": "turn and run status"
+    },
+    {
+      "event": "TEXT_MESSAGE_START",
+      "semantic": "assistant message open",
+      "source_family": "agent message"
+    },
+    {
+      "event": "TEXT_MESSAGE_CONTENT",
+      "semantic": "redacted text delta",
+      "source_family": "agent message delta"
+    },
+    {
+      "event": "TEXT_MESSAGE_END",
+      "semantic": "assistant message close",
+      "source_family": "agent message completed"
+    },
+    {
+      "event": "TOOL_CALL_START",
+      "semantic": "command tool lifecycle",
+      "source_family": "command start"
+    },
+    {
+      "event": "TOOL_CALL_ARGS",
+      "semantic": "redacted command/cwd",
+      "source_family": "command start"
+    },
+    {
+      "event": "TOOL_CALL_END",
+      "semantic": "command completion",
+      "source_family": "command completion"
+    },
+    {
+      "event": "TOOL_CALL_RESULT",
+      "semantic": "redacted output and exit evidence",
+      "source_family": "command completion"
+    },
+    {
+      "event": "RUN_FINISHED",
+      "semantic": "terminal or resumable interrupt",
+      "source_family": "turn completed or approval interrupt"
+    },
+    {
+      "event": "RUN_ERROR",
+      "semantic": "sanitized failure",
+      "source_family": "Codex error or transport failure"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

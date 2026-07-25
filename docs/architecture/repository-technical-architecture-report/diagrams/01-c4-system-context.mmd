@@ -1,0 +1,16 @@
+flowchart LR
+  Operator["現場操作人"]
+  Browser["Browser client"]
+  Web["VOISS AURA Control Room system"]
+  Aura["Project AURA canonical evidence"]
+  Codex["Codex engineering runtime"]
+  Repo["Allowed Git repository"]
+  Models["Local ASR, diarization, Gemma and enhancement runtimes"]
+  Provider["Codex model provider"]
+  Operator --> Browser
+  Browser -->|same-origin signed session| Web
+  Web -->|token-authenticated loopback evidence API| Aura
+  Web -->|explicit plan and approval through loopback Bridge| Codex
+  Aura --> Models
+  Codex --> Repo
+  Codex -. authenticated app-server .-> Provider

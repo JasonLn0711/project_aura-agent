@@ -1,0 +1,93 @@
+{
+  "$schema": "voiss.repository-architecture.findings.v1",
+  "coverage": {
+    "closure": "evidence_required",
+    "release_findings": "current_architecture_review"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "services/codex-bridge/src/server.ts",
+      "purpose": "plan delta source",
+      "reference": "services/codex-bridge/src/server.ts:L1731"
+    },
+    {
+      "path": "packages/ag-ui-codex-adapter/src/index.ts",
+      "purpose": "closed plan-delta adapter case",
+      "reference": "packages/ag-ui-codex-adapter/src/index.ts:L311"
+    },
+    {
+      "path": "docs/validation/2026-07-24-local-e2e.md",
+      "purpose": "mitigated single-run live finding evidence",
+      "reference": "docs/validation/2026-07-24-local-e2e.md:L40"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "control_id": "CTRL-EVIDENCE-001",
+      "id": "R-002",
+      "severity": "high",
+      "state": "open",
+      "title": "ASR work queue requires a measured bounded-capacity and backpressure policy"
+    },
+    {
+      "control_id": "CTRL-AURA-001",
+      "id": "R-004",
+      "severity": "medium",
+      "state": "open",
+      "title": "Model revision and digest evidence awaits the next validation layer"
+    },
+    {
+      "control_id": "CTRL-EVIDENCE-001",
+      "id": "F-ADAPTER-PLAN-DELTA",
+      "severity": "medium",
+      "state": "closed",
+      "title": "item/plan/delta has a bounded redacted plan activity mapping"
+    },
+    {
+      "control_id": "CTRL-ADAPTER-001",
+      "id": "F-CODEX-TRANSPORT-CLONE",
+      "severity": "high",
+      "state": "closed",
+      "title": "CopilotKit clone lifecycle retains the configured Codex Bridge transport"
+    },
+    {
+      "control_id": "CTRL-CODEX-001",
+      "id": "F-LIVE-E2E",
+      "severity": "medium",
+      "state": "mitigated_single_run",
+      "title": "One controlled AURA plus Codex plus browser live flow is retained; repeatability and dedicated negative paths remain release gates"
+    },
+    {
+      "control_id": "CTRL-EXPORT-001",
+      "id": "F-LICENSE",
+      "severity": "high",
+      "state": "open",
+      "title": "Dependency and model licenses remain NOASSERTION"
+    },
+    {
+      "control_id": "CTRL-WORKTREE-001",
+      "id": "F-WORKTREE",
+      "severity": "high",
+      "state": "open",
+      "title": "Implemented MVP remains an uncommitted source and retained-validation snapshot without a reviewer-selected target commit"
+    },
+    {
+      "control_id": "CTRL-AUDIT-001",
+      "id": "F-RETENTION",
+      "severity": "medium",
+      "state": "open",
+      "title": "TrustStore retention and migration contract awaits release decision"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

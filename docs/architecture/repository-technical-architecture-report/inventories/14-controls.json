@@ -1,0 +1,128 @@
+{
+  "$schema": "voiss.repository-architecture.controls.v1",
+  "coverage": {
+    "dedicated_live_negative_paths": "deny_run_scope_stop_recovery_and_callback_approvals_open",
+    "implemented_control_definitions": "complete_curated",
+    "live_effectiveness": "partial_one_controlled_fixture_flow"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "apps/voiss-aura-web/lib/trust-store.ts",
+      "purpose": "active controls",
+      "reference": "apps/voiss-aura-web/lib/trust-store.ts:L83"
+    },
+    {
+      "path": "docs/security-model.md",
+      "purpose": "security model",
+      "reference": "docs/security-model.md"
+    },
+    {
+      "path": "docs/validation/2026-07-24-local-e2e.md",
+      "purpose": "one-run control effectiveness evidence",
+      "reference": "docs/validation/2026-07-24-local-e2e.md:L84"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "id": "CTRL-AURA-001",
+      "implementation": "status proxy plus TrustStore control",
+      "title": "AURA runtime readiness",
+      "validation": "live bridge health gate"
+    },
+    {
+      "id": "CTRL-CODEX-001",
+      "implementation": "bridge status plus sanitized account state",
+      "title": "Codex authentication and app-server readiness",
+      "validation": "authenticated local status gate"
+    },
+    {
+      "id": "CTRL-EVIDENCE-001",
+      "implementation": "domain canDelegate contract and reviewed export",
+      "title": "Confirmed action has current source evidence",
+      "validation": "fixture and live evidence tests"
+    },
+    {
+      "id": "CTRL-WORKTREE-001",
+      "implementation": "Codex Bridge worktree manager and second-stage approval",
+      "title": "Approved write run uses an isolated worktree",
+      "validation": "live write-run evidence"
+    },
+    {
+      "id": "CTRL-NETWORK-001",
+      "implementation": "Codex thread sandbox policy in nested managed-bubblewrap",
+      "title": "Agent write runtime keeps network disabled",
+      "validation": "one live run policy observation plus a separate active socket egress-denial canary"
+    },
+    {
+      "id": "CTRL-SESSION-001",
+      "implementation": "HttpOnly SameSite cookie, origin and session verification",
+      "title": "Browser mutations require signed same-origin session",
+      "validation": "security tests and browser acceptance"
+    },
+    {
+      "id": "CTRL-SECRET-001",
+      "implementation": "server-only modules, child env allowlist, redaction",
+      "title": "Bridge and provider credentials stay server-side",
+      "validation": "secret canary and exported-evidence inspection"
+    },
+    {
+      "id": "CTRL-AUDIT-001",
+      "implementation": "canonical JSON SHA-256 chain in SQLite",
+      "title": "Control-plane audit events form a verifiable hash chain",
+      "validation": "TrustStore tests and persistent restart test"
+    },
+    {
+      "id": "CTRL-EXPORT-001",
+      "implementation": "bridge export endpoints, allowlisted paths, completed-write state, and authoritative validation pass gate",
+      "title": "Exports are bounded, sanitized, validation-gated, and explicitly requested",
+      "validation": "passed, missing, failed, help-only, out-of-scope, stale, and overflow export cases"
+    },
+    {
+      "id": "CTRL-VALIDATION-001",
+      "implementation": "recognized in-scope validation captures patch SHA-256 plus mutation generation; export requires a pass matching frozenPatchSha256 and terminalMutationGeneration, no failure, and no overflow",
+      "title": "Validation evidence binds to the terminal frozen patch and mutation generation",
+      "validation": "mutate-after-test, stale-pass, overflow, and terminal-patch generation cases"
+    },
+    {
+      "id": "CTRL-APPROVAL-001",
+      "implementation": "pending request registry, exact request id, turn-id check, scope validation, and automatic decline",
+      "title": "Codex approvals bind to the active run and turn",
+      "validation": "cross-run, stale-turn, malformed, and out-of-scope approval cases"
+    },
+    {
+      "id": "CTRL-PROTOCOL-001",
+      "implementation": "exact 0.145.0 gate, strict response shape, line-size ceiling, lifetime restart budget, request limits, and terminal timeout authority",
+      "title": "Codex protocol input and lifecycle remain bounded",
+      "validation": "version mismatch, oversize, malformed response, restart exhaustion, timeout-race, and policy-retention cases"
+    },
+    {
+      "id": "CTRL-STOP-001",
+      "implementation": "pending write activation cancellation before worktree plus active turn interruption",
+      "title": "Stop covers both staged and active Codex work",
+      "validation": "staged-write and active-run stop cases"
+    },
+    {
+      "id": "CTRL-ADAPTER-001",
+      "implementation": "CodexBridgeAgent clone override preserves transport; normalizer redacts and bounds event payloads",
+      "title": "CopilotKit per-request agents retain their Codex transport and bounded event contract",
+      "validation": "clone lifecycle, run/resume transport, plan delta, approval, and unknown-event cases"
+    },
+    {
+      "id": "CTRL-RUNTIME-001",
+      "implementation": "digest-pinned base, read-only vendor/auth mounts, allowlisted read-write roots, and nested managed-bubblewrap",
+      "title": "Verified Codex target lane isolates official runtime inside rootless Podman",
+      "validation": "one controlled live flow plus separate active egress-denial canary; direct-host workspace remains AppArmor-gated"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

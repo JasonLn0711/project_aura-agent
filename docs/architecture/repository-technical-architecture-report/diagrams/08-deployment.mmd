@@ -1,0 +1,27 @@
+flowchart TB
+  subgraph LocalHost["Local host deployment"]
+    Browser["Browser"]
+    Next["Next.js process :3000"]
+    AuraSvc["Python FastAPI AURA Bridge :8765"]
+    CodexSvc["Node Codex Bridge :8770"]
+    Desktop["PyQt6 AURA desktop"]
+    Podman["Rootless Podman"]
+    CodexImage["Digest-pinned Ubuntu Codex image"]
+    CodexProc["Official Codex app-server"]
+    Sandbox["Nested managed-bubblewrap"]
+    VendorAuth["Vendor and auth read-only mounts"]
+    TrustData["VOISS TrustStore SQLite"]
+    AuraData["AURA artifacts, evidence SQLite, and audit JSONL"]
+    CodexData["Isolated worktrees and Codex evidence exports"]
+  end
+  Browser --> Next
+  Next --> AuraSvc
+  Next --> CodexSvc
+  Next --> TrustData
+  AuraSvc --> AuraData
+  Desktop --> AuraData
+  CodexSvc --> Podman --> CodexImage --> CodexProc --> Sandbox
+  VendorAuth -->|read-only| CodexImage
+  Sandbox -->|allowlisted rw roots| CodexData
+  Note["One Podman image is implemented; Compose and Kubernetes are absent"]
+  Note -. scope note .-> LocalHost

@@ -1,0 +1,74 @@
+{
+  "$schema": "voiss.repository-architecture.queues-events.v1",
+  "coverage": {
+    "external_brokers": "none_detected",
+    "in_process_and_streaming_paths": "complete_curated"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "packages/ag-ui-codex-adapter/src/index.ts",
+      "purpose": "stream transport",
+      "reference": "packages/ag-ui-codex-adapter/src/index.ts:L59"
+    },
+    {
+      "path": "packages/trust-engine/src/index.ts",
+      "purpose": "ordered audit sequence",
+      "reference": "packages/trust-engine/src/index.ts:L157"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "backpressure": "consumer-driven AsyncIterable/Observable",
+      "durability": "none",
+      "id": "ag-ui-observable",
+      "kind": "in_process_stream",
+      "owner": "AG-UI adapter"
+    },
+    {
+      "backpressure": "process and request timeouts",
+      "durability": "run evidence export only",
+      "id": "codex-jsonrpc",
+      "kind": "stdio_json_rpc",
+      "owner": "Codex Bridge"
+    },
+    {
+      "backpressure": "HTTP stream",
+      "durability": "sanitized export path",
+      "id": "codex-http-stream",
+      "kind": "NDJSON_or_SSE",
+      "owner": "Codex Bridge"
+    },
+    {
+      "backpressure": "finding R-002 remains relevant to bounded queue design",
+      "durability": "artifact output",
+      "id": "aura-asr-threads",
+      "kind": "PyQt worker threads",
+      "owner": "AURA desktop"
+    },
+    {
+      "backpressure": "synchronous local writes",
+      "durability": "persistent SQLite",
+      "id": "trust-audit-chain",
+      "kind": "SQLite append sequence",
+      "owner": "TrustStore"
+    },
+    {
+      "backpressure": "no Kafka, RabbitMQ, Redis queue, or cloud queue implemented",
+      "durability": "not_applicable",
+      "id": "external-broker",
+      "kind": "message_broker",
+      "owner": "none"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

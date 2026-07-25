@@ -1,0 +1,23 @@
+sequenceDiagram
+  actor User as 現場操作人
+  participant Web as VOISS Web
+  participant Aura as AURA Bridge
+  participant Agent as VOISS Orchestrator
+  participant Codex as Codex Bridge
+  participant Repo as Isolated Worktree
+  User->>Web: Open meeting evidence
+  Web->>Aura: Read session, segments, claims, actions
+  Aura-->>Web: Canonical evidence with freshness
+  User->>Web: Confirm claim and action
+  Web->>Aura: Review and export request
+  Aura-->>Web: Reviewed evidence
+  Web->>Agent: Delegate supported action
+  Agent->>Codex: Start read-only plan
+  Codex-->>Web: Normalized plan and activity stream
+  User->>Codex: Approve write activation
+  Codex->>Repo: Create isolated worktree
+  Codex-->>User: Request named command or file approval
+  User->>Codex: Allow once, allow run scope, or deny
+  Codex-->>Web: Result, diff, and validation events
+  Codex->>Codex: Freeze terminal patch and bind validation hash plus mutation generation
+  Codex-->>Web: Validation-gated evidence export

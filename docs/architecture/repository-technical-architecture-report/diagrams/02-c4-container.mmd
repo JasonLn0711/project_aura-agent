@@ -1,0 +1,26 @@
+flowchart TB
+  subgraph Host["Single local host"]
+    Browser["Browser"]
+    Web["Next.js Web server :3000"]
+    Trust["SQLite TrustStore"]
+    AuraBridge["AURA Bridge :8765"]
+    CodexBridge["Codex Bridge :8770"]
+    AuraDesktop["AURA desktop"]
+    AuraData["Canonical AURA artifacts and evidence index"]
+    Podman["Rootless Podman"]
+    Image["Digest-pinned Codex runtime image"]
+    AppServer["Official Codex app-server"]
+    Sandbox["Nested managed-bubblewrap"]
+    Worktree["Isolated Git worktree"]
+    VendorAuth["Codex vendor and auth read-only mounts"]
+    Ollama["Ollama and local models"]
+  end
+  Browser --> Web
+  Web --> Trust
+  Web --> AuraBridge
+  Web --> CodexBridge
+  AuraBridge --> AuraData
+  AuraDesktop --> AuraData
+  AuraDesktop --> Ollama
+  CodexBridge --> Podman --> Image --> AppServer --> Sandbox --> Worktree
+  VendorAuth -->|read-only| Image

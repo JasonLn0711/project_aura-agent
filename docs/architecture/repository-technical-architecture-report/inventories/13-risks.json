@@ -1,0 +1,156 @@
+{
+  "$schema": "voiss.repository-architecture.risks.v1",
+  "coverage": {
+    "claim_ceiling": "not_production_or_multi_repository_repeatability",
+    "risk_register": "current_architecture_review",
+    "runtime_resolution": "one_controlled_live_flow_and_separate_egress_canary_retained"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "KNOWN_LIMITATIONS.md",
+      "purpose": "known limitations",
+      "reference": "KNOWN_LIMITATIONS.md"
+    },
+    {
+      "path": "docs/release-checklist.md",
+      "purpose": "release gates",
+      "reference": "docs/release-checklist.md"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "evidence": [
+        "docs/validation/2026-07-24-local-e2e.md",
+        "docs/release-checklist.md"
+      ],
+      "id": "R-001",
+      "scope_control": "保留 LOCAL_E2E_VALIDATED claim ceiling；deny、run-scope、stop/recovery與callback approval以專屬live trace啟用",
+      "severity": "medium",
+      "state": "controlled_single_run",
+      "title": "單一受控 fixture 的 AURA、Codex 與 Web live 路徑已驗證，擴充到其他 repo、host 與負向路徑需各自留證"
+    },
+    {
+      "evidence": [
+        "apps/voiss-aura-web/lib/trust-store.ts",
+        "src/aura/asr/threads.py"
+      ],
+      "id": "R-002",
+      "scope_control": "桌面工作執行維持本機範圍；下一層以壓力測試確認容量",
+      "severity": "high",
+      "state": "open",
+      "title": "ASR 工作容量與背壓需要量測後設定上限"
+    },
+    {
+      "evidence": [
+        "packages/demo-fixtures/src/index.ts",
+        "apps/voiss-aura-web/components/control-room.tsx"
+      ],
+      "id": "R-003",
+      "scope_control": "VOISS_MODE、service status 與 fixture 標籤維持兩條證據路徑",
+      "severity": "medium",
+      "state": "controlled",
+      "title": "本機 UI 同時支援 demo fixture 與 local live mode，展示證據需明確標示來源"
+    },
+    {
+      "evidence": [
+        "src/aura/system/runtime_report.py",
+        "docs/release-checklist.md"
+      ],
+      "id": "R-004",
+      "scope_control": "外部模型與 native runtime 維持獨立 activation gate",
+      "severity": "high",
+      "state": "open",
+      "title": "模型 revision、digest、授權與主機 runtime 仍需逐項驗證"
+    },
+    {
+      "evidence": [
+        "services/codex-bridge/src/server.ts",
+        "packages/ag-ui-codex-adapter/src/index.ts"
+      ],
+      "id": "R-005",
+      "scope_control": "current event family由專用case累積最多16,000字元並套用sensitive-text redaction；single-fixture live stream已留證，future protocol drift持續由E2E監測",
+      "severity": "medium",
+      "state": "closed",
+      "title": "Codex plan delta 已有 bounded、redacted 的專用 AG-UI adapter mapping"
+    },
+    {
+      "evidence": [
+        "pnpm-lock.yaml",
+        "uv.lock",
+        "LICENSE"
+      ],
+      "id": "R-006",
+      "scope_control": "SBOM 使用 NOASSERTION，正式釋出以 license resolution 作為閘門",
+      "severity": "high",
+      "state": "open",
+      "title": "相依套件與外部模型授權資料尚未完成解析"
+    },
+    {
+      "evidence": [
+        ".git",
+        "docs/architecture/repository-technical-architecture-report/validation/manifest.json"
+      ],
+      "id": "R-007",
+      "scope_control": "以 snapshot hash、checksum manifest、分層驗證與 publish evidence 完成版本封存",
+      "severity": "high",
+      "state": "open",
+      "title": "目前 MVP 實作仍是未提交工作樹快照"
+    },
+    {
+      "evidence": [
+        "packages/trust-engine/src/index.ts",
+        "apps/voiss-aura-web/lib/trust-store.ts"
+      ],
+      "id": "R-008",
+      "scope_control": "資料維持本機 owner-only path；下一層定義 migration 與 retention contract",
+      "severity": "medium",
+      "state": "open",
+      "title": "控制平面 SQLite 的 retention、migration 與 cleanup policy 需要 release 決策"
+    },
+    {
+      "evidence": [
+        "services/codex-bridge/Containerfile",
+        "services/codex-bridge/run-in-podman.sh",
+        "docs/validation/2026-07-24-local-e2e.md"
+      ],
+      "id": "R-009",
+      "scope_control": "Podman wrapper只讀掛載vendor/auth並只讓allowlisted repo、worktree、export roots可寫；direct-host :workspace由AppArmor preflight啟用",
+      "severity": "medium",
+      "state": "controlled_single_host",
+      "title": "digest-pinned rootless Podman Codex lane已在單一主機驗證，跨主機重建與apt package版本仍需封存"
+    },
+    {
+      "evidence": [
+        "apps/voiss-aura-web/next.config.ts",
+        "apps/voiss-aura-web/lib/security.ts"
+      ],
+      "id": "R-010",
+      "scope_control": "unsafe-eval 只在 development；正式模式以 Next headers 與 loopback origin 驗證",
+      "severity": "medium",
+      "state": "controlled",
+      "title": "CSP 的 development unsafe-eval 與正式 origin policy 需要瀏覽器驗收"
+    },
+    {
+      "evidence": [
+        "packages/ag-ui-codex-adapter/src/index.ts",
+        "packages/ag-ui-codex-adapter/tests/adapter.test.ts"
+      ],
+      "id": "R-011",
+      "scope_control": "CodexBridgeAgent overrides clone and copies the private transport; adapter regression coverage exercises the clone lifecycle",
+      "severity": "high",
+      "state": "closed",
+      "title": "CopilotKit per-request clone retains the configured Codex Bridge transport"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

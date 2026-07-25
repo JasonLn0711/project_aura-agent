@@ -1,0 +1,112 @@
+{
+  "$schema": "voiss.repository-architecture.components.v1",
+  "coverage": {
+    "generated_or_vendor_trees": "excluded",
+    "workspace_components": "complete_for_current_implementation_roots"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "pnpm-workspace.yaml",
+      "purpose": "Node workspace topology",
+      "reference": "pnpm-workspace.yaml:L1"
+    },
+    {
+      "path": "pyproject.toml",
+      "purpose": "Python workspace topology",
+      "reference": "pyproject.toml:L90"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "id": "legacy-aura-desktop",
+      "kind": "desktop_application",
+      "path": "src/aura",
+      "responsibility": "audio capture, ASR, review, summary, evidence, audit, and local UI",
+      "source_files": 50,
+      "source_lines": 11723
+    },
+    {
+      "id": "summary-pipeline",
+      "kind": "python_library",
+      "path": "src/summary",
+      "responsibility": "structured Gemma/Ollama summary and claim-layer generation",
+      "source_files": 15,
+      "source_lines": 1116
+    },
+    {
+      "id": "voiss-aura-web",
+      "kind": "web_application",
+      "path": "apps/voiss-aura-web",
+      "responsibility": "local control-room UI and same-origin server boundaries",
+      "source_files": 37,
+      "source_lines": 9901
+    },
+    {
+      "id": "domain",
+      "kind": "typescript_library",
+      "path": "packages/domain",
+      "responsibility": "Zod-backed evidence, action, run, approval, and trust contracts",
+      "source_files": 4,
+      "source_lines": 272
+    },
+    {
+      "id": "demo-fixtures",
+      "kind": "typescript_library",
+      "path": "packages/demo-fixtures",
+      "responsibility": "deterministic demo-mode meeting and run evidence",
+      "source_files": 4,
+      "source_lines": 644
+    },
+    {
+      "id": "trust-engine",
+      "kind": "typescript_library",
+      "path": "packages/trust-engine",
+      "responsibility": "SQLite metadata, hash-chain audit, evidence controls, and redaction",
+      "source_files": 4,
+      "source_lines": 1092
+    },
+    {
+      "id": "agent-runtime",
+      "kind": "typescript_library",
+      "path": "packages/agent-runtime",
+      "responsibility": "named orchestrator, Codex engineer, and demo agents",
+      "source_files": 4,
+      "source_lines": 792
+    },
+    {
+      "id": "ag-ui-codex-adapter",
+      "kind": "typescript_library",
+      "path": "packages/ag-ui-codex-adapter",
+      "responsibility": "Codex Bridge stream transport and AG-UI normalization",
+      "source_files": 4,
+      "source_lines": 1609
+    },
+    {
+      "id": "aura-bridge",
+      "kind": "python_service",
+      "path": "services/aura-bridge",
+      "responsibility": "loopback authenticated read/review/export access to canonical AURA evidence",
+      "source_files": 6,
+      "source_lines": 2006
+    },
+    {
+      "id": "codex-bridge",
+      "kind": "node_service",
+      "path": "services/codex-bridge",
+      "responsibility": "loopback Codex app-server mediation, approval, isolation, and export",
+      "source_files": 19,
+      "source_lines": 8677
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

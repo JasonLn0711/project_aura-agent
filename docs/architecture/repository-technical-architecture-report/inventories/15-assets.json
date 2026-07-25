@@ -1,0 +1,86 @@
+{
+  "$schema": "voiss.repository-architecture.assets.v1",
+  "coverage": {
+    "architecture_assets": "complete_curated",
+    "external_model_runtime_instances": "separate_activation_gates",
+    "host_instances": "one_verified_host_for_Podman_Codex_lane"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "apps/voiss-aura-web/lib/trust-store.ts",
+      "purpose": "runtime assets",
+      "reference": "apps/voiss-aura-web/lib/trust-store.ts:L18"
+    },
+    {
+      "path": "services/codex-bridge/Containerfile",
+      "purpose": "Codex container asset",
+      "reference": "services/codex-bridge/Containerfile:L1"
+    },
+    {
+      "path": "docs/validation/2026-07-24-local-e2e.md",
+      "purpose": "verified host asset instance",
+      "reference": "docs/validation/2026-07-24-local-e2e.md:L19"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "id": "asset-repo",
+      "kind": "repository",
+      "name": "Project AURA + VOISS MVP",
+      "state": "implemented_snapshot"
+    },
+    {
+      "id": "asset-web",
+      "kind": "application",
+      "name": "VOISS AURA Control Room",
+      "state": "implemented_source"
+    },
+    {
+      "id": "asset-aura",
+      "kind": "aura_runtime",
+      "name": "AURA Bridge and desktop runtime",
+      "state": "bridge_verified_one_controlled_fixture_flow_desktop_model_runtimes_separate"
+    },
+    {
+      "id": "asset-codex",
+      "kind": "codex_runtime",
+      "name": "Codex Bridge and app-server",
+      "state": "verified_one_controlled_fixture_flow_via_rootless_podman"
+    },
+    {
+      "id": "asset-codex-container",
+      "kind": "container_image",
+      "name": "Digest-pinned Codex rootless Podman target lane",
+      "state": "verified_single_host_build_and_live_flow"
+    },
+    {
+      "id": "asset-trust",
+      "kind": "metadata_store",
+      "name": "VOISS TrustStore SQLite",
+      "state": "assets_controls_findings_and_audit_persisted_other_tables_schema_reserved"
+    },
+    {
+      "id": "asset-models",
+      "kind": "external_runtime",
+      "name": "ASR, diarization, punctuation, Gemma, ClearVoice, CUDA and Ollama",
+      "state": "separate_activation_required"
+    },
+    {
+      "id": "asset-exports",
+      "kind": "evidence",
+      "name": "reviewed AURA and Codex evidence exports",
+      "state": "implemented_and_one_live_Codex_export_checksum_verified"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}

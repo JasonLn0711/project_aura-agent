@@ -1,0 +1,40 @@
+{
+  "$schema": "voiss.repository-architecture.scheduled-jobs.v1",
+  "coverage": {
+    "external_cron_or_ci_schedule": "none_detected",
+    "in_process_schedules": "complete_curated"
+  },
+  "current_evidence": {
+    "generated_at": "2026-07-25T00:00:00Z",
+    "kind": "uncommitted_source_and_retained_validation_snapshot",
+    "sha256": "6d6f7c1921878853d9c197145ad03cc2d42af872de665d247aee60b97893a6a7",
+    "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
+  },
+  "evidence": [
+    {
+      "path": "src/aura/scheduling.py",
+      "purpose": "recording schedule primitives",
+      "reference": "src/aura/scheduling.py"
+    },
+    {
+      "path": "src/aura/ui/transcription_tab.py",
+      "purpose": "scheduled recording UI",
+      "reference": "src/aura/ui/transcription_tab.py:L147"
+    }
+  ],
+  "product_milestone": "LOCAL_E2E_VALIDATED",
+  "records": [
+    {
+      "evidence": "src/aura/scheduling.py",
+      "id": "aura-scheduled-recording",
+      "persistence": "none_declared",
+      "scheduler": "PyQt QTimer and wall-clock scheduling",
+      "scope": "in_process_desktop",
+      "status": "implemented"
+    }
+  ],
+  "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
+  "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",
+  "source_baseline_role": "lineage_only",
+  "status": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT"
+}
