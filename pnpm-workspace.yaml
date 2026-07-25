@@ -1,0 +1,21 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+  - "services/*"
+allowBuilds:
+  "@scarf/scarf": false
+  better-sqlite3: true
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - "@copilotkit/a2ui-renderer@1.63.2"
+  - "@copilotkit/core@1.63.2"
+  - "@copilotkit/react-core@1.63.2"
+  - "@copilotkit/runtime-client-gql@1.63.2"
+  - "@copilotkit/runtime@1.63.2"
+  - "@copilotkit/shared@1.63.2"
+  - "@copilotkit/web-components@1.63.2"
+  - "@copilotkit/web-inspector@1.63.2"
+  - "@copilotkit/react-ui@1.63.2"
+  - "@copilotkit/sqlite-runner@1.63.2"

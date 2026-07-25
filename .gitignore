@@ -13,7 +13,7 @@ src/*.egg-info/
 # Runtime artifacts
 temp_transcript.txt
 temp_normalized.wav
-runtime/
+/runtime/
 outputs/
 recordings/
 reports/gemma4_e4b_summary_impact/local_outputs/
@@ -34,8 +34,19 @@ local_outputs/denoise_eval_candidates/
 *.aac
 *.wma
 *.aiff
+!apps/voiss-aura-web/public/demo/*.wav
 
 # Local machine state
 .env
 .env.*
 *.log
+
+# VOISS AURA local control-plane state
+.voiss/
+apps/voiss-aura-web/.next/
+apps/voiss-aura-web/.next-local/
+apps/voiss-aura-web/playwright-report/
+apps/voiss-aura-web/test-results/
+node_modules/
+coverage/
+*.tsbuildinfo

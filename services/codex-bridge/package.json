@@ -1,0 +1,27 @@
+{
+  "name": "@voiss/codex-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./server": "./src/server.ts"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "start": "node --experimental-strip-types src/cli.ts",
+    "dev": "node --experimental-strip-types src/cli.ts",
+    "test": "node --experimental-strip-types --test --test-concurrency=1 tests/*.test.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "check": "pnpm run typecheck && pnpm test"
+  },
+  "dependencies": {
+    "@voiss/trust-engine": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.7",
+    "typescript": "5.9.3"
+  }
+}

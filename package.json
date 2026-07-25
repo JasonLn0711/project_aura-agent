@@ -1,0 +1,24 @@
+{
+  "name": "voiss-aura-control-room",
+  "private": true,
+  "packageManager": "pnpm@11.17.0",
+  "scripts": {
+    "dev": "pnpm --filter @voiss/aura-web dev",
+    "demo": "pnpm --filter @voiss/aura-web demo",
+    "format": "prettier --write 'apps/voiss-aura-web/**/*.{ts,tsx,css}' 'packages/*/{src,tests}/**/*.ts' 'services/codex-bridge/{src,tests}/**/*.ts' 'scripts/*.mjs' 'package.json' 'pnpm-workspace.yaml' '{apps,packages,services}/*/package.json' '.github/workflows/*.yml'",
+    "format:check": "prettier --check 'apps/voiss-aura-web/**/*.{ts,tsx,css}' 'packages/*/{src,tests}/**/*.ts' 'services/codex-bridge/{src,tests}/**/*.ts' 'scripts/*.mjs' 'package.json' 'pnpm-workspace.yaml' '{apps,packages,services}/*/package.json' '.github/workflows/*.yml'",
+    "lint": "pnpm -r --if-present lint",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm -r --if-present test && pnpm test:architecture",
+    "test:coverage": "pnpm --filter @voiss/aura-web exec vitest run --coverage",
+    "test:architecture": "node scripts/check_architecture_boundaries.mjs",
+    "test:e2e": "pnpm --filter @voiss/aura-web test:e2e",
+    "test:e2e:live": "pnpm --filter @voiss/aura-web test:e2e:live",
+    "codex:runtime:build": "podman build --pull=missing -t localhost/voiss-codex-runtime:0.145.0 -f services/codex-bridge/Containerfile .",
+    "build": "pnpm -r --if-present build"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "4.0.18",
+    "prettier": "3.9.6"
+  }
+}

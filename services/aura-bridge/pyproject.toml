@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "voiss-aura-bridge"
+version = "0.1.0"
+description = "Loopback-only HTTP bridge for Project AURA canonical evidence."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi==0.116.1",
+  "uvicorn==0.35.0",
+]
+
+[project.optional-dependencies]
+test = [
+  "httpx==0.28.1",
+  "pytest==8.4.1",
+]
+
+[project.scripts]
+aura-bridge = "aura_bridge.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aura_bridge"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

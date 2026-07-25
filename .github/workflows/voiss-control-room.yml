@@ -1,0 +1,74 @@
+name: VOISS Control Room
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "feat/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: voiss-control-room-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  frozen-quality-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      COPILOTKIT_TELEMETRY_DISABLED: "true"
+      QT_QPA_PLATFORM: offscreen
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22.23.1"
+          package-manager-cache: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11.15"
+
+      - name: Activate pinned package managers
+        run: |
+          corepack enable
+          corepack prepare pnpm@11.17.0 --activate
+          python -m pip install --disable-pip-version-check uv==0.11.6
+
+      - name: Install frozen dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          uv sync --all-extras --all-packages --frozen
+
+      - name: Install Chromium runtime
+        run: pnpm --filter @voiss/aura-web exec playwright install --with-deps chromium
+
+      - name: Validate web and bridge workspaces
+        run: |
+          pnpm format:check
+          pnpm lint
+          pnpm typecheck
+          pnpm test
+          pnpm test:coverage
+          pnpm build
+
+      - name: Validate Python workspaces
+        run: |
+          uv run ruff check services/aura-bridge
+          uv run ruff format --check services/aura-bridge
+          uv run pytest -q services/aura-bridge/tests
+          uv run pytest -q
+
+      - name: Validate deterministic browser workflow
+        run: pnpm test:e2e
+
+      - name: Validate implemented architecture evidence
+        run: python3 docs/architecture/repository-technical-architecture-report/generate.py --check
