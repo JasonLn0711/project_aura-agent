@@ -140,6 +140,7 @@ EXCLUDED_PARTS = {
     ".voiss",
     ".venv",
     "__pycache__",
+    "coverage",
     "node_modules",
     "playwright-report",
     "test-results",

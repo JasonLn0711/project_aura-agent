@@ -8,7 +8,7 @@
   "current_evidence": {
     "generated_at": "2026-07-25T00:00:00Z",
     "kind": "uncommitted_source_and_retained_validation_snapshot",
-    "sha256": "c7e4266db46912b0b38f87d6700b1e1a9f670efb2c49ec4a196cd6d0ab2602f0",
+    "sha256": "9f64c159040bee39834284683d62bfc107720f633644bca53e11b35d9a157e16",
     "timestamp_semantics": "normalized_artifact_timestamp_not_wall_clock_observation"
   },
   "evidence": [

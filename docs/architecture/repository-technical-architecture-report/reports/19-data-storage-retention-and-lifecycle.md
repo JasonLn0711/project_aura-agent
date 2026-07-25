@@ -9,7 +9,7 @@
 | Scoped live run status | `LIVE_MINIMUM_COMPLETED` |
 | Source baseline | `6807f516d1083051d75373f110ac871f677f75ce` |
 | Baseline role | Source lineage only; it is not live MVP proof |
-| Current evidence | Uncommitted source and retained-validation snapshot `c7e4266db46912b0b38f87d6700b1e1a9f670efb2c49ec4a196cd6d0ab2602f0` |
+| Current evidence | Uncommitted source and retained-validation snapshot `9f64c159040bee39834284683d62bfc107720f633644bca53e11b35d9a157e16` |
 | Artifact timestamp | `2026-07-25T00:00:00Z` (normalized; not a wall-clock runtime observation) |
 
 ## Architecture finding
