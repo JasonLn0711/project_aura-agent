@@ -37,10 +37,18 @@ jobs:
         with:
           python-version: "3.11.15"
 
-      - name: Install Python audio build headers
+      - name: Install Python audio and desktop runtime libraries
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends portaudio19-dev
+          sudo apt-get install -y --no-install-recommends \
+            ffmpeg \
+            libegl1 \
+            libgl1 \
+            libxcb-cursor0 \
+            libxcb-xinerama0 \
+            libxkbcommon-x11-0 \
+            portaudio19-dev \
+            python3-dev
 
       - name: Activate pinned package managers
         run: |
