@@ -116,7 +116,9 @@ def write_session(root: Path) -> Path:
 
 
 class EvidenceSearchTests(unittest.TestCase):
-    def test_rebuilt_index_finds_traditional_chinese_segment_with_source_coordinates(self):
+    def test_rebuilt_index_finds_traditional_chinese_segment_with_source_coordinates(
+        self,
+    ):
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             write_session(root)
@@ -139,7 +141,9 @@ class EvidenceSearchTests(unittest.TestCase):
                     "speaker": "Jason",
                     "state": "confirmed",
                     "revision": 2,
-                    "session_path": str((root / "meeting-001_session" / "session.json").resolve()),
+                    "session_path": str(
+                        (root / "meeting-001_session" / "session.json").resolve()
+                    ),
                 }
             ],
         )
@@ -158,7 +162,9 @@ class EvidenceSearchTests(unittest.TestCase):
         self.assertEqual(results[0]["meeting_id"], "meeting-001")
         self.assertEqual(results[0]["title"], "AURA 產品會議")
         self.assertEqual(results[0]["status"], "ready")
-        self.assertEqual(results[0]["session_path"], str((session_dir / "session.json").resolve()))
+        self.assertEqual(
+            results[0]["session_path"], str((session_dir / "session.json").resolve())
+        )
         self.assertIn("本機部署", results[0]["matched_text"])
 
     def test_open_audio_span_returns_read_only_track_metadata(self):
@@ -244,9 +250,20 @@ class EvidenceSearchTests(unittest.TestCase):
 
             stats = rebuild_evidence_index(root, index_path)
             with EvidenceSearch(index_path) as evidence:
+                all_actions = evidence.get_actions()
                 actions = evidence.get_confirmed_actions()
 
         self.assertEqual(stats.action_count, 2)
+        self.assertEqual(
+            {
+                (action["action_id"], action["review_status"], action["support_status"])
+                for action in all_actions
+            },
+            {
+                ("action-001", "confirmed", "supported"),
+                ("action-002", "unreviewed", "unsupported"),
+            },
+        )
         self.assertEqual(
             actions,
             [
@@ -528,14 +545,18 @@ class EvidenceSearchTests(unittest.TestCase):
         self.assertIn("驗收", matched_text)
         self.assertLessEqual(len(matched_text), 120)
 
-    def test_claim_review_event_updates_confirmed_action_without_rewriting_summary(self):
+    def test_claim_review_event_updates_confirmed_action_without_rewriting_summary(
+        self,
+    ):
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             session_dir = write_session(root)
             summary_path = session_dir / "summary.json"
             summary = json.loads(summary_path.read_text(encoding="utf-8"))
             summary["claims"][0]["review_status"] = "unreviewed"
-            summary_path.write_text(json.dumps(summary, ensure_ascii=False), encoding="utf-8")
+            summary_path.write_text(
+                json.dumps(summary, ensure_ascii=False), encoding="utf-8"
+            )
             (session_dir / "review_events.jsonl").write_text(
                 json.dumps(
                     {
@@ -551,7 +572,7 @@ class EvidenceSearchTests(unittest.TestCase):
                             "review_status": {
                                 "from": "unreviewed",
                                 "to": "confirmed",
-                            }
+                            },
                         },
                     },
                     ensure_ascii=False,

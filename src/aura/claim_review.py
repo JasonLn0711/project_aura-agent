@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import datetime
 import json
+import re
 from pathlib import Path
 
 from aura.review import _atomic_write
 
 
 CLAIM_REVIEW_STATUSES = {"unreviewed", "confirmed", "rejected", "edited"}
+CORRELATION_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$")
 
 
 def _summary_claims(session_dir: Path) -> list[dict]:
@@ -67,10 +69,62 @@ def _append_event(session_dir: Path, event: dict) -> None:
     )
 
 
+def _correlation(correlation_id: str | None) -> dict[str, str]:
+    if correlation_id is None:
+        return {}
+    if not CORRELATION_ID_PATTERN.fullmatch(correlation_id):
+        raise ValueError("invalid claim review correlation id")
+    return {"correlation_id": correlation_id}
+
+
+def _require_current_evidence(session_dir: Path, claim: dict) -> None:
+    try:
+        session = json.loads(
+            (session_dir / "session.json").read_text(encoding="utf-8")
+        )
+        summary = json.loads(
+            (session_dir / "summary.json").read_text(encoding="utf-8")
+        )
+        segments_payload = json.loads(
+            (session_dir / "segments.json").read_text(encoding="utf-8")
+        )
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError("Claim confirmation requires current session evidence") from exc
+    if not isinstance(session, dict) or not isinstance(summary, dict):
+        raise ValueError("Claim confirmation requires current session evidence")
+    session_hash = str(session.get("transcript_sha256") or "")
+    summary_hash = str(summary.get("transcript_sha256") or "")
+    if not session_hash or summary_hash != session_hash:
+        raise ValueError("Claim evidence transcript hash is stale")
+    rows = (
+        segments_payload.get("segments", [])
+        if isinstance(segments_payload, dict)
+        else segments_payload
+    )
+    if not isinstance(rows, list):
+        raise ValueError("Claim confirmation requires current session segments")
+    current_segment_ids = {
+        str(item.get("segment_id"))
+        for item in rows
+        if isinstance(item, dict) and item.get("segment_id")
+    }
+    source_segment_ids = claim.get("source_segment_ids")
+    if not isinstance(source_segment_ids, list) or not source_segment_ids:
+        raise ValueError("A claim needs source evidence before confirmation")
+    if any(
+        not isinstance(segment_id, str)
+        or not segment_id
+        or segment_id not in current_segment_ids
+        for segment_id in source_segment_ids
+    ):
+        raise ValueError("Claim source segment is missing from the current session")
+
+
 def record_claim_review(
     session_dir: str | Path,
     claim_id: str,
     review_status: str,
+    correlation_id: str | None = None,
 ) -> dict:
     if review_status not in {"confirmed", "rejected"}:
         raise ValueError(f"unsupported claim review status: {review_status}")
@@ -82,11 +136,13 @@ def record_claim_review(
     )
     if claim is None:
         raise KeyError(claim_id)
-    if review_status == "confirmed" and (
-        claim.get("support_status") == "unsupported"
-        or not claim.get("source_segment_ids")
-    ):
-        raise ValueError("A claim needs source evidence before confirmation")
+    if review_status == "confirmed":
+        if (
+            claim.get("support_status") == "unsupported"
+            or not claim.get("source_segment_ids")
+        ):
+            raise ValueError("A claim needs source evidence before confirmation")
+        _require_current_evidence(directory, claim)
     previous = str(claim.get("review_status") or "unreviewed")
     if previous == review_status:
         return claim
@@ -94,6 +150,7 @@ def record_claim_review(
         "timestamp": datetime.datetime.now().astimezone().isoformat(timespec="seconds"),
         "event": f"claim.{review_status}",
         "claim_id": claim_id,
+        **_correlation(correlation_id),
         "changes": {
             "review_status": {
                 "from": previous,
@@ -110,6 +167,7 @@ def record_claim_edit(
     session_dir: str | Path,
     claim_id: str,
     text: str,
+    correlation_id: str | None = None,
 ) -> dict:
     replacement = str(text).strip()
     if not replacement:
@@ -137,6 +195,7 @@ def record_claim_edit(
             .isoformat(timespec="seconds"),
             "event": "claim.edited",
             "claim_id": claim_id,
+            **_correlation(correlation_id),
             "changes": {
                 "text": {"from": previous, "to": replacement},
                 "review_status": {"from": previous_status, "to": "edited"},

@@ -6,6 +6,24 @@ from pathlib import Path
 from aura.claim_review import load_claims, record_claim_edit, record_claim_review
 
 
+def _write_current_evidence(session_dir: Path) -> None:
+    (session_dir / "session.json").write_text(
+        json.dumps(
+            {"meeting_id": "meeting-1", "transcript_sha256": "current-hash"}
+        ),
+        encoding="utf-8",
+    )
+    (session_dir / "segments.json").write_text(
+        json.dumps(
+            {
+                "meeting_id": "meeting-1",
+                "segments": [{"segment_id": "seg-1"}],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
 class ClaimReviewTests(unittest.TestCase):
     def test_claim_review_is_append_only_and_does_not_rewrite_model_summary(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -15,6 +33,7 @@ class ClaimReviewTests(unittest.TestCase):
                 json.dumps(
                     {
                         "meeting_id": "meeting-1",
+                        "transcript_sha256": "current-hash",
                         "claims": [
                             {
                                 "claim_id": "claim-1",
@@ -30,6 +49,7 @@ class ClaimReviewTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
+            _write_current_evidence(session_dir)
             original_summary = summary_path.read_bytes()
 
             confirmed = record_claim_review(session_dir, "claim-1", "confirmed")
@@ -62,6 +82,7 @@ class ClaimReviewTests(unittest.TestCase):
                 json.dumps(
                     {
                         "meeting_id": "meeting-1",
+                        "transcript_sha256": "current-hash",
                         "claims": [
                             {
                                 "claim_id": "claim-unsupported",
@@ -77,6 +98,7 @@ class ClaimReviewTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
+            _write_current_evidence(session_dir)
 
             with self.assertRaisesRegex(ValueError, "source evidence"):
                 record_claim_review(
@@ -91,6 +113,7 @@ class ClaimReviewTests(unittest.TestCase):
                 json.dumps(
                     {
                         "meeting_id": "meeting-1",
+                        "transcript_sha256": "current-hash",
                         "claims": [
                             {
                                 "claim_id": "claim-1",
@@ -106,6 +129,7 @@ class ClaimReviewTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
+            _write_current_evidence(session_dir)
             original_summary = summary_path.read_bytes()
 
             record_claim_review(session_dir, "claim-1", "confirmed")

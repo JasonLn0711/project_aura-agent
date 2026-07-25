@@ -93,7 +93,9 @@ def _audio_tracks(
         try:
             path.relative_to(session_root)
         except ValueError as exc:
-            raise ValueError(f"Audio track path escapes its session directory: {path_value}") from exc
+            raise ValueError(
+                f"Audio track path escapes its session directory: {path_value}"
+            ) from exc
         resolved[str(name)] = str(path)
     if session.get("workflow") == "import" and session.get("source_path"):
         source = Path(str(session["source_path"])).expanduser().resolve()
@@ -102,15 +104,22 @@ def _audio_tracks(
             if isinstance(segments_payload, dict)
             else None
         )
-        if recorded_source and Path(str(recorded_source)).expanduser().resolve() != source:
-            raise ValueError("Imported source_path does not match segments.json audio_path")
+        if (
+            recorded_source
+            and Path(str(recorded_source)).expanduser().resolve() != source
+        ):
+            raise ValueError(
+                "Imported source_path does not match segments.json audio_path"
+            )
         resolved.setdefault("source", str(source))
         resolved.setdefault("mixed", str(source))
     return resolved
 
 
 def _action_payloads(summary: dict) -> list[dict]:
-    summary_fields = summary.get("summary") if isinstance(summary.get("summary"), dict) else summary
+    summary_fields = (
+        summary.get("summary") if isinstance(summary.get("summary"), dict) else summary
+    )
     detail_items = summary_fields.get("action_items", [])
     if not isinstance(detail_items, list):
         detail_items = []
@@ -126,7 +135,10 @@ def _action_payloads(summary: dict) -> list[dict]:
         else []
     )
     if not action_claims:
-        return [item if isinstance(item, dict) else {"task": str(item)} for item in detail_items]
+        return [
+            item if isinstance(item, dict) else {"task": str(item)}
+            for item in detail_items
+        ]
     payloads = []
     for index, claim in enumerate(action_claims):
         text = str(claim.get("text") or "").strip()
@@ -139,10 +151,16 @@ def _action_payloads(summary: dict) -> list[dict]:
 
 def _claim_review_overrides(session_dir: Path) -> dict[str, dict[str, str]]:
     canonical = session_dir / "review_events.jsonl"
-    paths = [canonical] if canonical.exists() else sorted(session_dir.glob("*_review_events.jsonl"))
+    paths = (
+        [canonical]
+        if canonical.exists()
+        else sorted(session_dir.glob("*_review_events.jsonl"))
+    )
     overrides = {}
     for path in paths:
-        for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        for line_number, line in enumerate(
+            path.read_text(encoding="utf-8").splitlines(), start=1
+        ):
             if not line.strip():
                 continue
             try:
@@ -170,7 +188,9 @@ def _claim_review_overrides(session_dir: Path) -> dict[str, dict[str, str]]:
     return overrides
 
 
-def rebuild_evidence_index(artifact_root: str | Path, index_path: str | Path) -> IndexStats:
+def rebuild_evidence_index(
+    artifact_root: str | Path, index_path: str | Path
+) -> IndexStats:
     root = Path(artifact_root).expanduser().resolve()
     target = Path(index_path).expanduser().resolve()
     if target.suffix.lower() not in {".sqlite", ".sqlite3", ".db"}:
@@ -186,7 +206,9 @@ def rebuild_evidence_index(artifact_root: str | Path, index_path: str | Path) ->
                     )
                 }
         except sqlite3.Error as exc:
-            raise ValueError("Existing evidence index target is not a valid SQLite database") from exc
+            raise ValueError(
+                "Existing evidence index target is not a valid SQLite database"
+            ) from exc
         if version != 1 or not {"meetings", "segments", "actions"}.issubset(tables):
             raise ValueError("Existing SQLite target is not an AURA evidence index")
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -252,11 +274,15 @@ def rebuild_evidence_index(artifact_root: str | Path, index_path: str | Path) ->
                 session = _read_json(session_path)
                 meeting_id = str(session.get("meeting_id") or "").strip()
                 if not meeting_id:
-                    raise ValueError(f"Cannot index {session_path}: meeting_id is required")
+                    raise ValueError(
+                        f"Cannot index {session_path}: meeting_id is required"
+                    )
                 summary_path = session_path.with_name("summary.json")
                 summary = _read_json(summary_path) if summary_path.exists() else {}
                 segments_path = session_path.with_name("segments.json")
-                segments_payload = _read_json(segments_path) if segments_path.exists() else []
+                segments_payload = (
+                    _read_json(segments_path) if segments_path.exists() else []
+                )
                 segment_rows = _segments(segments_payload)
                 summary_valid = (
                     bool(summary)
@@ -273,7 +299,11 @@ def rebuild_evidence_index(artifact_root: str | Path, index_path: str | Path) ->
                 )
                 title = str(
                     session.get("title")
-                    or (summary_fields.get("meeting_topic") if isinstance(summary_fields, dict) else "")
+                    or (
+                        summary_fields.get("meeting_topic")
+                        if isinstance(summary_fields, dict)
+                        else ""
+                    )
                     or session_path.parent.name
                 ).strip()
                 searchable_text = " ".join(
@@ -348,9 +378,7 @@ def rebuild_evidence_index(artifact_root: str | Path, index_path: str | Path) ->
                     )
                     indexed_segment_ids.add(segment_id)
                     segment_count += 1
-                action_items = (
-                    _action_payloads(summary) if summary_valid else []
-                )
+                action_items = _action_payloads(summary) if summary_valid else []
                 review_overrides = _claim_review_overrides(session_path.parent)
                 for index, payload in enumerate(action_items, start=1):
                     action_id = str(
@@ -380,9 +408,7 @@ def rebuild_evidence_index(artifact_root: str | Path, index_path: str | Path) ->
                         for segment_id in source_segment_ids
                         if str(segment_id) in indexed_segment_ids
                     ]
-                    support_status = str(
-                        payload.get("support_status") or "unsupported"
-                    )
+                    support_status = str(payload.get("support_status") or "unsupported")
                     if not source_segment_ids:
                         support_status = "unsupported"
                     connection.execute(
@@ -575,7 +601,7 @@ class EvidenceSearch:
             "exists": path.is_file(),
         }
 
-    def get_confirmed_actions(self, meeting_id: str | None = None) -> list[dict]:
+    def get_actions(self, meeting_id: str | None = None) -> list[dict]:
         rows = self._connection.execute(
             """
             SELECT
@@ -590,9 +616,7 @@ class EvidenceSearch:
                 actions.summary_path
             FROM actions
             JOIN meetings ON meetings.meeting_id = actions.meeting_id
-            WHERE actions.review_status = 'confirmed'
-              AND actions.support_status != 'unsupported'
-              AND (? IS NULL OR actions.meeting_id = ?)
+            WHERE (? IS NULL OR actions.meeting_id = ?)
             ORDER BY meetings.started_at DESC, actions.meeting_id, actions.action_id
             """,
             (meeting_id, meeting_id),
@@ -600,16 +624,30 @@ class EvidenceSearch:
         actions = []
         for row in rows:
             action = dict(row)
-            action["source_segment_ids"] = json.loads(action.pop("source_segment_ids_json"))
+            action["source_segment_ids"] = json.loads(
+                action.pop("source_segment_ids_json")
+            )
             actions.append(action)
         return actions
 
+    def get_confirmed_actions(self, meeting_id: str | None = None) -> list[dict]:
+        return [
+            action
+            for action in self.get_actions(meeting_id)
+            if action["review_status"] == "confirmed"
+            and action["support_status"] != "unsupported"
+        ]
+
 
 def _argument_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Build and query Project AURA local evidence indexes.")
+    parser = argparse.ArgumentParser(
+        description="Build and query Project AURA local evidence indexes."
+    )
     commands = parser.add_subparsers(dest="command", required=True)
 
-    rebuild = commands.add_parser("rebuild", help="Rebuild an index from canonical session artifacts.")
+    rebuild = commands.add_parser(
+        "rebuild", help="Rebuild an index from canonical session artifacts."
+    )
     rebuild.add_argument("artifact_root")
     rebuild.add_argument("index_path")
 

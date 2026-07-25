@@ -16,6 +16,24 @@ from aura.ui.transcript_review_table import TranscriptReviewTable
 from aura.ui.transcription_tab import TranscriptionTab
 
 
+def _write_current_evidence(session_dir: Path) -> None:
+    (session_dir / "session.json").write_text(
+        json.dumps(
+            {"meeting_id": "meeting-1", "transcript_sha256": "current-hash"}
+        ),
+        encoding="utf-8",
+    )
+    (session_dir / "segments.json").write_text(
+        json.dumps(
+            {
+                "meeting_id": "meeting-1",
+                "segments": [{"segment_id": "seg-1"}],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
 class SummaryClaimsTableTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -28,6 +46,7 @@ class SummaryClaimsTableTests(unittest.TestCase):
                 json.dumps(
                     {
                         "meeting_id": "meeting-1",
+                        "transcript_sha256": "current-hash",
                         "claims": [
                             {
                                 "claim_id": "claim-1",
@@ -43,6 +62,7 @@ class SummaryClaimsTableTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
+            _write_current_evidence(session_dir)
             table = SummaryClaimsTable()
 
             table.load_session(session_dir)
@@ -84,6 +104,7 @@ class SummaryClaimsTableTests(unittest.TestCase):
                 json.dumps(
                     {
                         "meeting_id": "meeting-1",
+                        "transcript_sha256": "current-hash",
                         "claims": [
                             {
                                 "claim_id": "claim-1",
@@ -98,6 +119,7 @@ class SummaryClaimsTableTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
+            _write_current_evidence(session_dir)
             table = SummaryClaimsTable()
             table.load_session(session_dir)
             table.selectRow(0)
