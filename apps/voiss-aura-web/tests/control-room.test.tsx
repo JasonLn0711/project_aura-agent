@@ -225,7 +225,9 @@ describe("trusted Control Room components", () => {
 
     render(<ControlRoom />);
 
-    expect(await screen.findByText(/AURA 會議資料尚未載入/)).toBeVisible();
+    expect(
+      await screen.findByText(/AURA 會議資料尚未載入；本機 bridge 可復原/),
+    ).toBeVisible();
     expect(
       screen.queryByText("VOISS × AURA 架構與可信任執行檢視"),
     ).not.toBeInTheDocument();

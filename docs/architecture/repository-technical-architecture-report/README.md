@@ -8,7 +8,7 @@
 - Product milestone: `LOCAL_E2E_VALIDATED`
 - Scoped live run status: `LIVE_MINIMUM_COMPLETED`
 - Source baseline: `6807f516d1083051d75373f110ac871f677f75ce`，只表示 AURA source lineage
-- Current MVP evidence: uncommitted source and retained-validation snapshot `dac3f6ca6ad6f170a66448b00adf713a204dede36f90d678ad3352d4918d8ef9`
+- Current MVP evidence: uncommitted source and retained-validation snapshot `c7e4266db46912b0b38f87d6700b1e1a9f670efb2c49ec4a196cd6d0ab2602f0`
 - Artifact timestamp: `2026-07-25T00:00:00Z`（normalized；不代表產品runtime觀測時間）
 - Retained evidence: `docs/validation/2026-07-24-local-e2e.md`記錄一個controlled fixture live flow、final-source quality matrix與single-host Podman runtime；本generator不宣稱自己執行了這些產品命令
 

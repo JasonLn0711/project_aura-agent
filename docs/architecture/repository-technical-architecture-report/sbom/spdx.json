@@ -20,12 +20,12 @@
   "documentDescribes": [
     "SPDXRef-Root"
   ],
-  "documentNamespace": "https://voiss.local/spdx/dac3f6ca6ad6f170a66448b00adf713a204dede36f90d678ad3352d4918d8ef9",
+  "documentNamespace": "https://voiss.local/spdx/c7e4266db46912b0b38f87d6700b1e1a9f670efb2c49ec4a196cd6d0ab2602f0",
   "name": "VOISS AURA repository technical architecture SBOM",
   "packages": [
     {
       "SPDXID": "SPDXRef-Root",
-      "comment": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT; product milestone LOCAL_E2E_VALIDATED; scoped live run LIVE_MINIMUM_COMPLETED; baseline 6807f516d1083051d75373f110ac871f677f75ce is lineage only; snapshot dac3f6ca6ad6f170a66448b00adf713a204dede36f90d678ad3352d4918d8ef9",
+      "comment": "IMPLEMENTED_MVP_SOURCE_SNAPSHOT; product milestone LOCAL_E2E_VALIDATED; scoped live run LIVE_MINIMUM_COMPLETED; baseline 6807f516d1083051d75373f110ac871f677f75ce is lineage only; snapshot c7e4266db46912b0b38f87d6700b1e1a9f670efb2c49ec4a196cd6d0ab2602f0",
       "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "externalRefs": [

@@ -2,7 +2,7 @@
   "$schema": "voiss.repository-architecture.package-metadata.v1",
   "current_evidence": {
     "build_validated_by_generator": false,
-    "dirty_path_count_excluding_this_package": 1,
+    "dirty_path_count_excluding_this_package": 3,
     "kind": "uncommitted_source_and_retained_validation_snapshot",
     "published": false,
     "retained_demo_evidence": {
@@ -25,7 +25,7 @@
       "terminal_patch_validations_passed": 2
     },
     "runtime_validated_by_generator": false,
-    "sha256": "dac3f6ca6ad6f170a66448b00adf713a204dede36f90d678ad3352d4918d8ef9",
+    "sha256": "c7e4266db46912b0b38f87d6700b1e1a9f670efb2c49ec4a196cd6d0ab2602f0",
     "source_file_count": 283,
     "tests_validated_by_generator": false
   },
@@ -56,7 +56,7 @@
     "deterministic_timestamp": true,
     "language": "Python"
   },
-  "git_head_at_generation": "c512211b60c9cf0344d616b7c463c7a8665cfec3",
+  "git_head_at_generation": "9445cb32d17cdc2c8d15d07db07a4917f597e790",
   "product_milestone": "LOCAL_E2E_VALIDATED",
   "scoped_live_run_status": "LIVE_MINIMUM_COMPLETED",
   "source_baseline": "6807f516d1083051d75373f110ac871f677f75ce",

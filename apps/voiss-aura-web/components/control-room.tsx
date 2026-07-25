@@ -781,7 +781,7 @@ export function ControlRoom() {
         if (!summaries.length) {
           setSessionLoadState("empty");
           setNotice(
-            "AURA 會議資料尚未載入；本機模式維持唯讀，Demo 可透過 pnpm demo 另行啟動。",
+            "AURA 會議資料尚未載入；本機 bridge 可復原，本機模式維持唯讀，Demo 可透過 pnpm demo 另行啟動。",
           );
           return;
         }
@@ -814,7 +814,7 @@ export function ControlRoom() {
         setSelectedClaimId("");
         setSelectedActionId("");
         setNotice(
-          "AURA 會議資料尚未載入；本機模式維持唯讀，Demo 可透過 pnpm demo 另行啟動。",
+          "AURA 會議資料尚未載入；本機 bridge 可復原，本機模式維持唯讀，Demo 可透過 pnpm demo 另行啟動。",
         );
       });
     return () => {
